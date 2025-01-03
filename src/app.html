@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap" rel="stylesheet">
+	  <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css" />
+	  <style>
+	  body {
+		  font-family: "Belanosima", sans-serif;
+		  background-color: black !important;
+	  }
+	  
+	  .belanosima-regular {
+		  font-family: "Belanosima", sans-serif;
+		  font-weight: 400;
+		  font-style: normal;
+	  }
+	  
+	  
+	  
+	  
+	  
+	  .shadow-custom::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 150%; /* Adjust as needed */
+		height: 150%; /* Adjust as needed */
+		background: rgba(154, 179, 162, 0.2); /* Shadow color */
+		border-radius: 50%; /* Splash shape */
+		filter: blur(20px); /* Makes the splash effect softer */
+		transform: translate(-10%, -10%); /* Adjust position */
+		z-index: -1; /* Place it behind the main element */
+	  }
+	  
+	   /* Inverted trapezoidal clip-path and smooth line edges */
+	   #active-item {
+		  clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%); /* Inverted trapezoid */
+		  border-radius: 0 0 10px 10px; /* Smooth bottom corners */
+		  transition: clip-path 0.3s ease-in-out, background-color 0.3s ease-in-out;
+		  line-height: 2rem; /* Set a custom line height for active item */
+		  padding-right: 6.625em;
+		  padding-left: 6.625em;
+		  font-size: medium;
+		}
+	  
+		/* Adjusted hover effect */
+		#active-item:hover {
+		  background-color: #3d3d3d; /* Slightly lighter on hover */
+		  clip-path: polygon(0% 0%, 100% 0%, 75% 100%, 25% 100%); /* Slightly adjusted for hover effect */
+		}
+	  
+		/* Default line height for non-active items */
+		ul li a {
+		  line-height: 1.5rem; /* Standard line height for non-active items */
+		}
+	  
+	  
+	  
+	  
+	  </style>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div>%sveltekit.body%</div>
+	</body>
+</html>
