@@ -60,7 +60,9 @@
 		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
+		"bcrypt": "^5.1.1",
 		"better-sqlite3": "^11.7.0",
-		"drizzle-orm": "^0.33.0"
+		"drizzle-orm": "^0.33.0",
+		"jsonwebtoken": "^9.0.2"
 	}
 }
