@@ -1,35 +1,45 @@
 <script>
     import { goto } from "$app/navigation";
+    import { signIn } from "@auth/sveltekit/client";
     let username = "";
     let password = "";
     let error = "";
   
+    // const handleSubmit = async () => {
+    //   error = "";
+  
+    //   try {
+    //     const response = await fetch("/accounts/auth/login", {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({ username, password }),
+    //     });
+  
+    //     if (!response.ok) {
+    //       const data = await response.json();
+    //       throw new Error(data.error || "Login failed");
+    //     }
+  
+    //     const { token } = await response.json();
+  
+    //     // Save the token in localStorage or cookies
+    //     localStorage.setItem("authToken", token);
+  
+    //     // Redirect to a protected page or dashboard
+    //     goto("/accounts/dashboard/profile");
+    //   } catch (err) {
+    //     error = err.message;
+    //   }
+    // };
+
     const handleSubmit = async () => {
-      error = "";
-  
-      try {
-        const response = await fetch("/accounts/auth/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password }),
-        });
-  
-        if (!response.ok) {
-          const data = await response.json();
-          throw new Error(data.error || "Login failed");
-        }
-  
-        const { token } = await response.json();
-  
-        // Save the token in localStorage or cookies
-        localStorage.setItem("authToken", token);
-  
-        // Redirect to a protected page or dashboard
-        goto("/accounts/dashboard/profile");
-      } catch (err) {
-        error = err.message;
-      }
-    };
+    const res = await signIn("credentials", {
+      username,
+      password,
+      redirect: true,
+      callbackUrl: "/accounts/dashboard/profile", // Redirect after successful login
+    });
+  };
   </script>
   
   <div class="min-h-screen flex items-center justify-center bg-gray-100">

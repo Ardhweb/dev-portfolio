@@ -13,7 +13,9 @@
 		"test": "npm run test:unit -- --run",
 		"db:push": "drizzle-kit push",
 		"db:migrate": "drizzle-kit migrate",
-		"db:studio": "drizzle-kit studio"
+		"db:studio": "drizzle-kit studio",
+		"generate": "drizzle-kit generate",
+		"push": "drizzle-kit push"
 	},
 	"files": [
 		"dist",
@@ -56,6 +58,9 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
+		"@auth/core": "^0.37.4",
+		"@auth/drizzle-adapter": "^1.7.4",
+		"@auth/sveltekit": "^1.7.4",
 		"@libsql/client": "^0.9.0",
 		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
