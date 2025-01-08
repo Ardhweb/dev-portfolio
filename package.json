@@ -48,7 +48,6 @@
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/better-sqlite3": "^7.6.12",
 		"autoprefixer": "^10.4.20",
-		"drizzle-kit": "^0.22.8",
 		"publint": "^0.2.0",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
@@ -61,13 +60,20 @@
 		"@auth/core": "^0.37.4",
 		"@auth/drizzle-adapter": "^1.7.4",
 		"@auth/sveltekit": "^1.7.4",
-		"@libsql/client": "^0.9.0",
+		"@libsql/client": "^0.14.0",
 		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
+		"babel-plugin-inline-import": "^3.0.0",
 		"bcrypt": "^5.1.1",
 		"better-sqlite3": "^11.7.0",
-		"drizzle-orm": "^0.33.0",
-		"jsonwebtoken": "^9.0.2"
+		"dotenv": "^16.4.7",
+		"drizzle-kit": "^0.20.4",
+		"drizzle-orm": "^0.29.0",
+		"expo": "^52.0.23",
+		"expo-drizzle-studio-plugin": "^0.1.1",
+		"expo-sqlite": "^15.0.5",
+		"jsonwebtoken": "^9.0.2",
+		"sqlite3": "^5.1.7"
 	}
 }

@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1736357166914,
+      "tag": "0000_condemned_betty_ross",
+      "breakpoints": true
+    }
+  ]
+}
