@@ -134,45 +134,12 @@
 
 <!--Offcanvas-->
 
-<script>
-  console.log(data)
-</script>
 
-<Totalusers users={data.users_data} />
+
 
 
 
   
-  <h1 class="text-white">Total Users: {data.users_data.length}</h1>
-  
-  <ul class="text-red">
-    {#each data.users_data as user (user.id)}
-      <li>
-        <p class="text-white">Name: {user.name}</p>
-        <p class="text-white">Email: {user.email}</p>
-      </li>
-    {/each}
-  </ul>
-  
-  {#if data.users_data.length === 0}
-    <p>No users found.</p>
-  {/if}
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 

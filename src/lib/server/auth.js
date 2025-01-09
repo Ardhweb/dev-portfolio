@@ -2,7 +2,7 @@ import { eq } from 'drizzle-orm';
 import { sha256 } from '@oslojs/crypto/sha2';
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import { db } from '$lib/server/db';
-import * as table from '$lib/server/db/schema';
+import * as table from '$drizzle/schema/schema.js';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -41,11 +41,11 @@ export async function validateSession(sessionId) {
 	const [result] = await db
 		.select({
 			// Adjust user table here to tweak returned data
-			user: { id: table.user.id, username: table.user.username },
+			user: { id: table.users.id, username: table.users.username },
 			session: table.session
 		})
 		.from(table.session)
-		.innerJoin(table.user, eq(table.session.userId, table.user.id))
+		.innerJoin(table.user, eq(table.session.userId, table.users.id))
 		.where(eq(table.session.id, sessionId));
 
 	if (!result) {
