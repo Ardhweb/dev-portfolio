@@ -1,11 +1,12 @@
 // src/routes/dashboard/+page.server.js
-export const load = async ({ locals }) => {
-    if (!locals.session) {
+export const load = async ({event }) => {
+    const session   = await event.locals.auth()
+    if (!session) {
       throw redirect(302, "/accounts/auth/login");
     }
   
     return {
-      session: locals.session,
+      session: await event.locals.auth(),
     };
   };
   

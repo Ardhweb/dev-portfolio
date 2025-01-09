@@ -1,6 +1,7 @@
 <script>
   import { SignIn, SignOut } from "@auth/sveltekit/components"
   import { page } from "$app/stores"
+    import { signOut } from "@auth/sveltekit/client";
 </script>
  
 
@@ -12,13 +13,13 @@
       <small>Signed in as</small><br />
       <strong>{$page.data.session.user?.name ?? "User"}</strong>
     </span>
-    <SignOut>
-      <div slot="submitButton" class="buttonPrimary">Sign out</div>
-    </SignOut>
+
+      <button on:click={signOut({ callbackUrl: '/', redirect:true })} class="bg-blue-500 hover:bg-blue-700  py-2 px-4 rounded">Sign out</button>
+
   {:else}
     <span class="notSignedInText">You are not signed in</span>
     <SignIn>
-      <div slot="submitButton" class="buttonPrimary">Sign in</div>
+      <div slot="submitButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Sign in</div>
     </SignIn>
   {/if}
 </div>

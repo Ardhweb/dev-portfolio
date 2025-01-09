@@ -62,6 +62,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth(async (event) => {
       async redirect({ url, baseUrl }) {
         return url.startsWith(baseUrl) ? url : `${baseUrl}/accounts/dashboard/profile`;
       },
+      
     },
   };
 
