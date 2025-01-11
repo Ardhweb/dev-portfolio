@@ -9,26 +9,26 @@ export const users = sqliteTable("users", {
   });
   
 export const session = sqliteTable("session", {
-    id: text('id').primaryKey(),
+    id: text('id').primaryKey().default('AUTOINCREMENT'),
     // userId: text('user_id').notNull().references(() => user.id),
     userId: text('user_id').notNull(),
     expiresAt: integer('expires_at', { mode: 'timestamp' }).notNull(),
 });
 
 export const primarycategories = sqliteTable("primarycategories",{
-  id: text('id').primaryKey(),
+  id: text('id').primaryKey().default('AUTOINCREMENT'),
   categoryname : text('categoryname').notNull(),
 
 })
 
 export const secondcategories = sqliteTable("secondcategories",{
-  id: text('id').primaryKey(),
+  id: text('id').primaryKey().default('AUTOINCREMENT'),
   categoryname : text('categoryname').notNull(),
 
 })
 
 export const skillset = sqliteTable("skillset",{
-  id: text('id').primaryKey(),
+  id: text('id').primaryKey().default('AUTOINCREMENT'),
   name: text('name').notNull(),
   expertise: text('expertise').notNull(),
   stars: integer('stars'),
@@ -37,12 +37,12 @@ export const skillset = sqliteTable("skillset",{
 })
 
 export const project_types = sqliteTable("project_types",{
-  id: text('id').primaryKey(),
+  id: text('id').primaryKey().default('AUTOINCREMENT'),
   name : text('name').notNull(),
 
 })
 export const project = sqliteTable("project", {
-  id: text('id').primaryKey(),
+  id: text('id').primaryKey().default('AUTOINCREMENT'),
   projectname : text('projectname').notNull(),
   description: text('description'),
   usedlanguage : text('usedlanguage'),
@@ -56,7 +56,7 @@ export const project = sqliteTable("project", {
 })
 
 export const media  = sqliteTable('media', {
-  id: text('id'),
+  id: text('id').default('AUTOINCREMENT'),
   type: text('type').notNull(),
   url: text('url').notNull(),
   location: text('id'),
