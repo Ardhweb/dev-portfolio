@@ -22,6 +22,13 @@
       "when": 1736609495394,
       "tag": "0002_clear_random",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1736610698374,
+      "tag": "0003_chilly_annihilus",
+      "breakpoints": true
     }
   ]
 }

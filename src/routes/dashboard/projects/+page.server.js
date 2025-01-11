@@ -10,9 +10,13 @@ export const actions = {
       const end_at = formData.get('end_at');
       const status = formData.get('status');
       const liveurl = formData.get('liveurl');
-      const primarycategory = formData.get('primarycategory ');
-      const secondarycategory = formData.get('secondarycategory');
+      // const primarycategory = formData.get('primarycategory ');
+      // const secondarycategory = formData.get('secondarycategory');
       const type = formData.get('type');
+      const primarycategory = 200
+      const secondarycategory = 454
+
+      
       
   
       try {

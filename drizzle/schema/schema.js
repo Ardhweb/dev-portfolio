@@ -1,6 +1,6 @@
-import { sqliteTable, text, integer,foreignKey } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer,foreignKey, primaryKey } from 'drizzle-orm/sqlite-core';
 import { relations } from 'drizzle-orm';
-
+import { eq, sql } from 'drizzle-orm';
 export const users = sqliteTable("users", {
     name: text("name").notNull(),
     email: text("email").notNull().unique(),
@@ -42,7 +42,7 @@ export const project_types = sqliteTable("project_types",{
 
 })
 export const project = sqliteTable("project", {
-  id: text('id').primaryKey().default('AUTOINCREMENT'),
+  id: integer('id').primaryKey(), 
   projectname : text('projectname').notNull(),
   description: text('description'),
   usedlanguage : text('usedlanguage'),
