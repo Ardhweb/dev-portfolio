@@ -117,7 +117,7 @@
 
 
 <!--myWork-->
-<Work></Work>
+<Work projects={data.projects}></Work>
 <!--Workend-!->
 
 <!How We Work-->

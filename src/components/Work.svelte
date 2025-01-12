@@ -1,20 +1,28 @@
+<script>
+  export let projects = []; // This will hold data for a single user
+</script>
+
+
+
 <section id="section-projects-history" class="flex flex-col  p-8 min-h-screen">
     <h4 class="flex-first text-white text-[3.5rem]">Work</h4>
-    <!-- Single Card -->
+    {#if projects.length > 0}
 
-  
+    {#each projects as project}
+  <!-- Single Card -->
    <!-- Grid Layout -->
-  <div id="projectGrid" class="relative grid grid-cols-5 gap-2 p-6 text-center border border-gray-700 rounded-lg transition-all duration-300 ease-in-out bg-gray-800 hover:bg-opacity-50 hover:bg-cover hover:bg-[url('https://picsum.photos/536/354')]">
+  <div id="projectGrid" class=" mt-6 relative grid grid-cols-5 gap-4 p-6 text-center border border-gray-700 rounded-lg transition-all duration-300 ease-in-out bg-gray-800 hover:bg-opacity-50 hover:bg-cover hover:bg-[url('https://picsum.photos/536/354')]">
   
   <!-- Year and Category -->
   <div class="col-span-1 text-white flex flex-col justify-center items-center">
   <div class="text-3xl ">2022</div>
-  <p class="text-sm text-gray-400">Supply Chain</p>
+  <p class="text-sm text-gray-400">{project.projectname}</p>
   </div>
   
   <!-- Description -->
   <div class="col-span-3 text-white text-center flex flex-col justify-center items-center">
-  <p class="group-hover:mix-blend-difference text-sm text-gray-400 text-wrap text-pretty truncate">
+   
+    <p class="group-hover:mix-blend-difference text-sm text-gray-400 text-wrap text-pretty truncate">
    Supply Chain Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique aspernatur sunt earum voluptate delectus dolor suscipit unde soluta sit minus quidem, rem accusantium, molestiae nesciunt, recusandae perferendis quibusdam expedita quae?
   </p>
   </div>
@@ -35,7 +43,8 @@
    <!-- svelte-ignore a11y_img_redundant_alt -->
    <img src="https://picsum.photos/536/354" alt="Project Image" class="w-full md:w-1/2 rounded-lg object-cover">
    <div class="md:w-1/2 text-left align-top items-start">
-     <h2 class="text-4xl font-medium mb-2">Project Description</h2>
+    <h4 class="text-4xl font-medium mb-2">{project.projectname}</h4>
+     <h5 class="text-2xl font-medium mb-2">Project Description</h5>
      <p class="text-sm text-gray-400">
        This project focuses on streamlining the supply chain process through advanced web development strategies.
      </p>
@@ -86,6 +95,8 @@
       
     </div>
   </div>
+
+  {/each}
   
   
   
@@ -135,5 +146,8 @@
   
       document.addEventListener("DOMContentLoaded", () => showSlide(currentSlide));
     </script>
-      
+  
+  {:else}
+  <p>No users found.</p>
+{/if}
     </section>
