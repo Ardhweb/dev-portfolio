@@ -1,17 +1,15 @@
 <script>
   import { index } from "drizzle-orm/sqlite-core";
   export let projects = []; // This will hold data for a single user
-
-
-
+  export let len_total_proj;
+  let siz = len_total_proj - 3;
+  console.log(siz)
   let mprojects = []; // Holds the data from the API
-  let lastfetchproId = 4; // Tracks the last fetched project ID
+  let lastfetchproId = 3; // Tracks the last fetched project ID
   let showLess = false; // Flag to toggle between "Show More" / "Show Less"
-  
   async function fetchData() {
-    console.log(total_projects)
+    console.log('Mproject size',mprojects.length)
       console.log('Fetching more projects...');
-      
       try {
           const response = await fetch(`/api/data?lastfetchproId=${lastfetchproId}`);
           const result = await response.json();
@@ -31,7 +29,6 @@
           console.error('Error fetching data:', error);
       }
   }
-
   // Function to handle the "Show Less" action
   function toggleShowLess() {
       mprojects = []; // Clear mprojects
@@ -70,7 +67,6 @@
 <section id="section-projects-history" class="flex flex-col  p-8 min-h-screen">
   <h4 class="flex-first text-white text-[3.5rem]">Work</h4>
     {#if projects.length > 0}
-
     {#each projects as project, index }
   <!-- Single Card -->
    <!-- Grid Layout -->
@@ -283,28 +279,24 @@
 
 {/each}
 
-
-  <!-- Button to toggle between "Load More" / "Show Less" -->
-  <div class="flex justify-center mt-4">
-    {#if mprojects.length > 0}
-        <!-- Show Show Less Button if there are projects -->
-        <button
-            on:click={toggleShowLess}
-            class="w-50 tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4"
-        >
-            Show Less
-        </button>
-    {:else}
-        <!-- Show Load More Button if there are no projects -->
-        <button
-            on:click={fetchData}
-            class="w-50 tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4"
-        >
-            Load More Projects
-        </button>
-    {/if}
+<div class="flex justify-center mt-4">
+  {#if siz === mprojects.length}
+      <!-- Show "Show Less" Button if the lengths are equal -->
+      <button
+          on:click={toggleShowLess}
+          class="w-50 tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4"
+      >
+          Show Less
+      </button>
+  {:else}
+      <!-- Show "Load More" Button if the lengths are not equal -->
+      <button
+          on:click={fetchData}
+          class="w-50 tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4"
+      >
+          Load More Projects
+      </button>
+  {/if}
 </div>
-
-
 </section>
 

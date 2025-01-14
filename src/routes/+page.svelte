@@ -9,7 +9,7 @@
     import { pushState } from '$app/navigation';
     import Totalusers from '../components/TestCompo/totalusers.svelte';
     let { data } = $props();
-    const {  offset, limit, total_projects } = data;
+    const {  offset, limit, len_total_proj } = data;
 </script>
 
 
@@ -120,7 +120,7 @@
 
 
 <!--myWork-->
-<Work  {offset} {limit} {total_projects}  projects={data.projects}></Work>
+<Work  {offset} {limit} {len_total_proj}  projects={data.projects}></Work>
 <!--Workend-!->
 
 <!How We Work-->
