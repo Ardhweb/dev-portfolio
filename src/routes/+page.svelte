@@ -1,4 +1,5 @@
 
+<!-- svelte-ignore non_reactive_update -->
 <script>
     import Navbar from '../components/Navbar.svelte';
     import HowWeWork from "../components/HowWeWork.svelte";
@@ -8,7 +9,9 @@
     import { pushState } from '$app/navigation';
     import Totalusers from '../components/TestCompo/totalusers.svelte';
     let { data } = $props();
+    const {  offset, limit, total_projects } = data;
 </script>
+
 
 
 <div class="bg-gray-900 border-t-lg border-gray-700">
@@ -117,7 +120,7 @@
 
 
 <!--myWork-->
-<Work projects={data.projects}></Work>
+<Work  {offset} {limit} {total_projects}  projects={data.projects}></Work>
 <!--Workend-!->
 
 <!How We Work-->
@@ -133,9 +136,6 @@
 <Footer></Footer>
 
 <!--Offcanvas-->
-
-
-
 
 
 
