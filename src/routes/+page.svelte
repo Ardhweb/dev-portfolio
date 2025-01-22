@@ -49,8 +49,8 @@
             {#if $page.data.session.user}
                 <!-- svelte-ignore node_invalid_placement_ssr -->
                 <div class="relative inline-block">
-                    <span class="absolute top-0 left-1 rounded-full bg-green-300 h-[0.3rem] w-[0.3rem] animate-ping"></span>
-                    <span class="absolute top-0 left-1 rounded-full bg-green-400 h-[0.2rem] w-[0.2rem]"></span>
+                    <span class="absolute top-0 left-1 rounded-full bg-green-300 h-[0.4rem] w-[0.4rem] animate-ping"></span>
+                    <span class="absolute top-0 left-1 rounded-full bg-green-400 h-[0.350rem] w-[0.350rem]"></span>
                 </div>
         {/if}
         {:else}

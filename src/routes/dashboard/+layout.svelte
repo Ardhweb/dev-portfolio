@@ -44,6 +44,7 @@
   <!-- Navigation Links -->
   <div class="flex flex-col p-4 space-y-4 flex-grow">
     <a href="/dashboard" class="px-3 py-2 rounded hover:bg-gray-700" sveltekit:prefetch>Home</a>
+    <a href="/dashboard/media" class="px-3 py-2 rounded hover:bg-gray-700" sveltekit:prefetch>Media</a>
     <a href="/dashboard/projects" class="px-3 py-2 rounded hover:bg-gray-700" sveltekit:prefetch>Projects</a>
     <a href="/dashboard/settings" class="px-3 py-2 rounded hover:bg-gray-700" sveltekit:prefetch>Settings</a>
   </div>
