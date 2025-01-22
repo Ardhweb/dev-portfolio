@@ -10,6 +10,7 @@
     import Totalusers from '../components/TestCompo/totalusers.svelte';
     let { data } = $props();
     const {  offset, limit, len_total_proj } = data;
+    import { page } from "$app/stores"
 </script>
 
 
@@ -42,7 +43,23 @@
     <!-- Right Side: Information -->
     <div class="text-center md:text-left">
       <h1 class="text-6xl  text-white mb-4">Hello, I'm Rahul</h1>
-      <p class="text-xl text-gray-300 mb-4">Software Developer</p>
+      <p class="text-xl text-gray-300 mb-4">
+        Software Developer
+        {#if $page.data.session}
+            {#if $page.data.session.user}
+                <!-- svelte-ignore node_invalid_placement_ssr -->
+                <div class="relative inline-block">
+                    <span class="absolute top-0 left-1 rounded-full bg-green-300 h-[0.3rem] w-[0.3rem] animate-ping"></span>
+                    <span class="absolute top-0 left-1 rounded-full bg-green-400 h-[0.2rem] w-[0.2rem]"></span>
+                </div>
+        {/if}
+        {:else}
+        <span class="inline-block rounded-full bg-gray-400 h-[0.2rem] w-[0.2rem]"></span>
+
+        {/if}
+    </p>
+    
+      
       <p class="text-gray-400 mb-6">Passionate about coding and building impactful applications. Always eager to learn and contribute to amazing projects.</p>
       <div class="flex gap-4 mt-4">
         <!-- svelte-ignore event_directive_deprecated -->
@@ -136,6 +153,11 @@
 <Footer></Footer>
 
 <!--Offcanvas-->
+
+
+ 
+
+ 
 
 
 
