@@ -1,4 +1,13 @@
+
+<!-- svelte-ignore non_reactive_update -->
 <script>
+  import { onMount } from 'svelte';
+  let { dataDash } = $props();
+
+  // let projects = []; // Get the `projects` data from the `load` function
+  let selectedProjectId = ''; // To store the selected project ID
+  console.log("His",dataDash)
+  //ORM GET
    let file;
    let uploadMessage = '';
    let uploadedURL = "";
@@ -54,10 +63,25 @@
 </style>
  
  <main>
+  
+ 
   <div class="flex flex-col items-center justify-center p-2 bg-gray-100">
    <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">File Uploading at Cloudnary</h2>
-   <form class="rounded border flex flex-col"  on:submit={handleFileUpload} enctype="multipart/form-data">
-     <input type="file" id="formFile" name="image" on:change={handleFileChange} required />
+   <!-- svelte-ignore event_directive_deprecated -->
+   <form class="rounded flex flex-col"  on:submit={handleFileUpload} enctype="multipart/form-data">
+    <!-- <div>
+      <label for="project-select">Select a Project:</label>
+      <select id="project-select" bind:value={selectedProjectId}>
+          <option value="" disabled selected>Select a project</option>
+          {#each projects as project}
+              <option value={project.id}>{project.id}</option>
+          {/each}
+      </select>
+      <p>Selected Project ID: {selectedProjectId}</p>
+  </div> -->
+    
+    
+    <input type="file" id="formFile" name="image" on:change={handleFileChange} required />
      <!-- Custom Upload Button -->
       
 <!-- svelte-ignore a11y_consider_explicit_label -->

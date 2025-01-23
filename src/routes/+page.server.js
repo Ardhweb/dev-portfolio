@@ -12,9 +12,7 @@ export async function load() {
      const len_total_proj = total_projects.length;
      console.log('Total_projects:',total_projects.length);
      
-    
-    
- 
+
      return {
          projects,
          len_total_proj
