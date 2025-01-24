@@ -4,13 +4,39 @@
   export let data; // Data is automatically passed by SvelteKit
   const { projects } = data;// Get the `projects` data from the `load` function
   let selectedProjectId = ''; // To store the selected project ID
-  console.log("His",projects)
+  //console.log("His",projects)
   //ORM GET
    let file;
    let uploadMessage = '';
    let uploadedURL = "";
 
    let fileName = ""; // Stores the selected file name
+
+  let type_naming = 'image';
+
+  async function createMedia(type_naming, returning_url, project_id) {
+        const formData = new FormData();
+        formData.append('type_naming', type_naming);
+        formData.append('returning_url', returning_url);
+        formData.append('project_id', project_id);
+
+        try {
+            const response = await fetch('?/createMedia', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Media created successfully:', result);
+            } else {
+                console.error('Failed to create media:', await response.text());
+            }
+        } catch (error) {
+            console.error('Error calling action:', error);
+        }
+    }
+
  
    const handleFileUpload = async (event) => {
      event.preventDefault(); // Prevent the default form submission behavior
@@ -33,6 +59,8 @@
          const data = await response.json();
          uploadMessage = `Upload successful!`;
          uploadedURL = `${data.url}`
+         createMedia(type_naming, data.url, selectedProjectId);
+
          alert('File successfully uploaded!');
        } else {
          const error = await response.json();

@@ -56,10 +56,10 @@ export const project = sqliteTable("project", {
 })
 
 export const media  = sqliteTable('media', {
-  id: text('id').default('AUTOINCREMENT'),
+  id: integer('id').primaryKey(), 
   type: text('type').notNull(),
   url: text('url').notNull(),
-  location: text('id'),
+  location: text('location'),
   related_project: integer('related_project') .references(() => project.id),
 })
 

@@ -29,6 +29,20 @@
       "when": 1736610698374,
       "tag": "0003_chilly_annihilus",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1737732750083,
+      "tag": "0004_absent_wolf_cub",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1737733082802,
+      "tag": "0005_fresh_wolf_cub",
+      "breakpoints": true
     }
   ]
 }
