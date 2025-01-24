@@ -1,14 +1,7 @@
-export async function load({ fetch }) {
-    const response = await fetch('/api/list/projects'); // Fetch data from your API
-    const dataDash = await response.json();
+import {db} from "$lib/server/db/index.js";
+import {project} from "./drizzle/schema/schema.js";
+export async function load() {
+    const projects = await db.select().from(project)
+    return {projects,};
 
-    console.log("Media Data PageSr",dataDash.Projects)
-
-    if (dataDash.success) {
-        return {
-            projects: dataDash.Projects, // Pass the fetched projects to the page
-        };
-    } else {
-        throw new Error(dataDash.error || 'Failed to fetch projects');
-    }
 }

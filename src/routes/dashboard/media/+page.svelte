@@ -1,12 +1,10 @@
 
 <!-- svelte-ignore non_reactive_update -->
 <script>
-  import { onMount } from 'svelte';
-  let { dataDash } = $props();
-
-  // let projects = []; // Get the `projects` data from the `load` function
+  export let data; // Data is automatically passed by SvelteKit
+  const { projects } = data;// Get the `projects` data from the `load` function
   let selectedProjectId = ''; // To store the selected project ID
-  console.log("His",dataDash)
+  console.log("His",projects)
   //ORM GET
    let file;
    let uploadMessage = '';
@@ -65,21 +63,21 @@
  <main>
   
  
-  <div class="flex flex-col items-center justify-center p-2 bg-gray-100">
+  <div class="flex flex-col items-center justify-center p-3 rounded ">
    <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">File Uploading at Cloudnary</h2>
    <!-- svelte-ignore event_directive_deprecated -->
    <form class="rounded flex flex-col"  on:submit={handleFileUpload} enctype="multipart/form-data">
-    <!-- <div>
-      <label for="project-select">Select a Project:</label>
-      <select id="project-select" bind:value={selectedProjectId}>
+    <div class="bg-gray-50 m-2 rounded flex flex-col px-4 py-3 gap-2">
+      <label for="project-select">*Select a Project:</label>
+      <select required class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" id="project-select" bind:value={selectedProjectId}>
           <option value="" disabled selected>Select a project</option>
           {#each projects as project}
-              <option value={project.id}>{project.id}</option>
+              <option value={project.id}>{project.projectname}</option>
           {/each}
       </select>
-      <p>Selected Project ID: {selectedProjectId}</p>
-  </div> -->
-    
+      <!-- <p>Selected Project ID: {selectedProjectId}</p> -->
+  </div> 
+    <div class="bg-gray-50 m-2 rounded flex flex-col px-2 py-3 gap-3">
     
     <input type="file" id="formFile" name="image" on:change={handleFileChange} required />
      <!-- Custom Upload Button -->
@@ -98,7 +96,8 @@
 </button>
 
      <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload</button>
-   </form>
+</div>  
+    </form>
   </div>
    <!-- Upload Message Popup -->
    {#if uploadMessage}
