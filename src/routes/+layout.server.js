@@ -1,8 +1,3 @@
-// export const load = async (event) => {
-//   return {
-//     session: await event.locals.auth()
-//   };
-// };
 import { error } from '@sveltejs/kit';
 
 export const load = async (event) => {

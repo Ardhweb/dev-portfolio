@@ -2,16 +2,19 @@
   import { index } from "drizzle-orm/sqlite-core";
   export let projects = []; // This will hold data for a single user
   export let len_total_proj;
+  export let first_project_id ;
+
   let siz = len_total_proj - 3;
   console.log(siz)
   let mprojects = []; // Holds the data from the API
-  let lastfetchproId = 3; // Tracks the last fetched project ID
+  let lastfetchproId = first_project_id-1; // Tracks the last fetched project ID
   let showLess = false; // Flag to toggle between "Show More" / "Show Less"
   async function fetchData() {
     console.log('Mproject size',mprojects.length)
       console.log('Fetching more projects...');
       try {
-          const response = await fetch(`/api/data?lastfetchproId=${lastfetchproId}`);
+          // const response = await fetch(`/api/data?lastfetchproId=${lastfetchproId}`);
+            const response = await fetch(`/api/data?lastfetchproId=${lastfetchproId}`);
           const result = await response.json();
 
           if (result.success) {
@@ -37,35 +40,10 @@
 </script>
 
 
-<!-- 
-<div class="p-6 max-w-4xl mx-auto">
-  <h1 class="text-2xl font-bold text-center mb-6">Projects</h1>
-  <button
-      on:click={fetchData}
-      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:ring-2 focus:ring-blue-300"
-  >Load More Projects
-  </button>
-  <ul class="mt-6 space-y-4">
-      {#if mprojects.length === 0}
-          <li class="text-gray-500">No projects loaded yet. Click the button above to load projects.</li>
-      {/if}
-      {#each mprojects as project}
-          <li
-              class="p-4 border rounded shadow hover:shadow-md transition-shadow bg-white flex items-center justify-between"
-          >
-              <div>
-                  <h2 class="font-semibold text-lg">{project.projectname}</h2>
-                  <p class="text-gray-500 text-sm">ID: {project.id}</p>
-              </div>
-              <span class="text-sm text-blue-400">{project.status}</span>
-          </li>
-      {/each}
-  </ul>
-</div> -->
 
 
 <section id="section-projects-history" class="flex flex-col  p-8 min-h-screen">
-  <h4 class="flex-first text-white text-[3.5rem]">Work</h4>
+  <h4 class="flex-first text-white text-[3.5rem]">Recent Work</h4>
     {#if projects.length > 0}
     {#each projects as project, index }
   <!-- Single Card -->
