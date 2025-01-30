@@ -1,26 +1,30 @@
 <script>
   import { index } from "drizzle-orm/sqlite-core";
+  export let medias = [];
   export let projects = []; // This will hold data for a single user
   export let len_total_proj;
   export let first_project_id ;
 
+
   let siz = len_total_proj - 3;
-  console.log(siz)
+  console.log("doidi",siz)
   let mprojects = []; // Holds the data from the API
   let lastfetchproId = first_project_id-1; // Tracks the last fetched project ID
+  let offsetId;
   let showLess = false; // Flag to toggle between "Show More" / "Show Less"
   async function fetchData() {
     console.log('Mproject size',mprojects.length)
       console.log('Fetching more projects...');
       try {
           // const response = await fetch(`/api/data?lastfetchproId=${lastfetchproId}`);
-            const response = await fetch(`/api/data?lastfetchproId=${lastfetchproId}`);
+          const response = await fetch(`/api/data?lastfetchproId=${lastfetchproId}`);
           const result = await response.json();
+          console.log(result)
 
           if (result.success) {
               // Append new projects to the list
               mprojects = [...mprojects, ...result.moreProjects];
-
+             
               // Update the last fetched project ID if new data is received
               if (result.moreProjects.length > 0) {
                   lastfetchproId = result.moreProjects[result.moreProjects.length - 1].id;
@@ -32,11 +36,19 @@
           console.error('Error fetching data:', error);
       }
   }
-  // Function to handle the "Show Less" action
   function toggleShowLess() {
-      mprojects = []; // Clear mprojects
-      showLess = false; // Change to "Show More"
-  }
+   
+    mprojects = []; // Clear mprojects if there are items in it
+    showLess = false; // Change to "Show More"
+  
+}
+ import Carousel from "svelte-carousel";
+ 
+  let carousel; // for calling methods of the carousel instance
+  const handleNextClick = () => {
+    carousel.goToNext();
+  };
+
 </script>
 
 
@@ -78,7 +90,7 @@
   <div id="projectDetails{index}" class=" text-white col-span-5 overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
   <div class="p-4 border-t border-gray-700 mt-4 flex flex-col md:flex-row items-center gap-4">
    <!-- svelte-ignore a11y_img_redundant_alt -->
-   <img src="https://picsum.photos/536/354" alt="Project Image" class="w-full md:w-1/2 rounded-lg object-cover">
+   <img src="{project.img}" alt="Project Image" class="w-full md:w-1/2 rounded-lg object-cover">
    <div class="md:w-1/2 text-left align-top items-start">
     <h4 class="text-4xl font-medium mb-2">{project.projectname}</h4>
      <h5 class="text-2xl font-medium mb-2">Project Description</h5>
@@ -106,36 +118,33 @@
   </div>
   </div>
   </div>
+
+
   
-   <!-- Carousel Popup Modal -->
-  <div id="galleryModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-50">
-    <div class="bg-gray-800 p-4 rounded-lg w-11/12 max-w-3xl relative">
-      <!-- Close Button (higher z-index to be on top) -->
-      <button on:click={closeGallery()} class="absolute top-2 right-2 text-white text-6xl z-30">×</button>
-      
-      <!-- Carousel -->
-      <div class="carousel space-x-4 overflow-hidden flex items-center">
-        <!-- Example Images and Videos in the Carousel -->
-        <div class="carousel-item flex-shrink-0 w-full" style="display: block;">
-          <img src="https://picsum.photos/500/300" alt="Slide 1" class="w-full rounded-lg">
+  
+<!-- Carousel Popup Modal -->
+<div id="galleryModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-50">
+  <div class="bg-gray-800 p-4 rounded-lg w-11/12 max-w-3xl relative">
+    <!-- Close Button (higher z-index to be on top) -->
+    <button on:click={closeGallery} class="absolute top-2 right-2 text-white text-6xl z-30">×</button> 
+
+    <!-- Carousel -->
+    <div class="carousel space-x-4 overflow-hidden flex items-center">
+      {#each medias as item, index}
+        <div class="carousel-item flex-shrink-0 w-full" style="display: {currentSlide === index ? 'block' : 'none'};">
+          <img src="{item.url}" alt="slide-{index}" class="w-full rounded-lg">
         </div>
-        <div class="carousel-item flex-shrink-0 w-full" style="display: none;">
-          <!-- svelte-ignore a11y_media_has_caption -->
-          <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls="" class="w-full rounded-lg"></video>
-        </div>
-        <div class="carousel-item flex-shrink-0 w-full" style="display: none;">
-          <img src="https://picsum.photos/500/301" alt="Slide 3" class="w-full rounded-lg">
-        </div>
-      </div>
-      
-      <!-- Centered Navigation Arrows (without overlapping the close button) -->
-      <div class="absolute inset-0 flex items-center justify-between px-4 z-20">
-        <button on:click={prevSlide()} class="text-white text-5xl">❮</button>
-        <button on:click={nextSlide()} class="text-white text-5xl">❯</button>
-      </div>
-      
+      {/each}
+    </div>
+
+    <!-- Centered Navigation Arrows (without overlapping the close button) -->
+    <div class="absolute inset-0 flex items-center justify-between px-4 z-20">
+      <button on:click={prevSlide} class="text-white text-5xl">❮</button>
+      <button on:click={nextSlide} class="text-white text-5xl">❯</button>
     </div>
   </div>
+</div>
+
   
   <script>
     function toggleDetails(index) {
@@ -152,37 +161,6 @@
     }
 }
 
-  
-    function openGallery() {
-      document.getElementById("galleryModal").classList.remove("hidden");
-    }
-  
-    function closeGallery() {
-      document.getElementById("galleryModal").classList.add("hidden");
-    }
-  
-
-    // Carousel Functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-item');
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.style.display = i === index ? 'block' : 'none';
-      });
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => showSlide(currentSlide));
   </script>
 
   {/each}

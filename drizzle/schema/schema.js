@@ -53,6 +53,7 @@ export const project = sqliteTable("project", {
   primarycategory: integer("primarycategory").notNull(),
   secondarycategory: integer("secondarycategory").notNull(),
   type: text("type").notNull(),// Dropdown-like predefined options
+  img: text('img'),
 })
 
 export const media  = sqliteTable('media', {
@@ -61,6 +62,12 @@ export const media  = sqliteTable('media', {
   url: text('url').notNull(),
   location: text('location'),
   related_project: integer('related_project') .references(() => project.id),
+})
+
+export const seo_data  = sqliteTable('seo_dat', {
+  id: integer('id').primaryKey(), 
+ seoitems: text('seoitems')
+ 
 })
 
 

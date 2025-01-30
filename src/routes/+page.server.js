@@ -1,8 +1,9 @@
 import { db } from "$lib/server/db/index.js";
-import { project } from "./drizzle/schema/schema.js";
+import { project,media } from "./drizzle/schema/schema.js";
 import { gt, desc, asc, sql } from "drizzle-orm";
 import { json } from '@sveltejs/kit';
 export async function load() {
+   
     const limit = 3; // Number of items to fetch at a time
     const projects = await db
         .select()
@@ -15,12 +16,15 @@ export async function load() {
     console.log('Total_projects:', total_projects.length);
     const first_project_id = total_projects && total_projects.length > 0 ? total_projects[0].id : null;
     console.log(first_project_id)
+    const medias = await db.select().from(media)
+    console.log(medias)
 
 
     return {
         projects,
         len_total_proj,
-        first_project_id 
+        first_project_id ,
+        medias,
 
 
     };

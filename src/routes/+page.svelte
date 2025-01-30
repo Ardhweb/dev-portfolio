@@ -137,7 +137,7 @@
 
 
 <!--myWork-->
-<Work  {offset} {limit} {len_total_proj} {first_project_id } projects={data.projects}></Work>
+<Work  {offset} {limit} {len_total_proj} {first_project_id } projects={data.projects} medias={data.medias}></Work>
 <!--Workend-!->
 
 <!How We Work-->

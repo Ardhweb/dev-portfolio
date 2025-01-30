@@ -47,7 +47,9 @@
     <a href="/dashboard/media" class="px-3 py-2 rounded hover:bg-gray-700" sveltekit:prefetch>Media</a>
     <a href="/dashboard/projects" class="px-3 py-2 rounded hover:bg-gray-700" sveltekit:prefetch>Projects</a>
     <a href="/dashboard/settings" class="px-3 py-2 rounded hover:bg-gray-700" sveltekit:prefetch>Settings</a>
+    
   </div>
+
   
   <!-- Footer -->
   <footer class="absolute bottom-0 p-4 text-sm text-gray-400 border-t border-gray-700">
