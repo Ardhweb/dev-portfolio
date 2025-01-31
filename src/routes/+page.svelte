@@ -7,18 +7,10 @@
   import Work from "../components/Work.svelte";
   import { pushState } from "$app/navigation";
   import Totalusers from "../components/TestCompo/totalusers.svelte";
-  import Carousel from "../components/Carousel.svelte";
   let { data } = $props();
   const { offset, limit, len_total_proj, first_project_id } = data;
   import { page } from "$app/stores";
 
-  let colors = ["red", "orange", "yellow", "green", "blue"];
-  let imgsrc = [
-    "https://placehold.co/600x400",
-    "https://placehold.co/600x400/000000/FFF",
-    "https://placehold.co/10x10",
-    "https://images.unsplash.com/photo-1505533321630-975218a5f66f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
-  ];
 </script>
 
 <div class="bg-gray-900 border-t-lg border-gray-700">
@@ -185,17 +177,5 @@
 
   <!--Offcanvas-->
 
-  <!-- <Carousel>
-    {#each imgsrc as imgurl, index (index)}
-      
-      <img alt="jk" class="self-center h-[12rem]" src={imgurl} />
-    {/each}
 
-    <span slot="left-control" class="text-white bg-blue-500 p-3 rounded-lg"
-      >Left</span
-    >
-    <span slot="right-control" class="text-white bg-blue-500 p-3 rounded-lg"
-      >Right</span
-    >
-  </Carousel> -->
 </div>

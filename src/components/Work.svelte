@@ -1,6 +1,6 @@
 <script>
   import { index } from "drizzle-orm/sqlite-core";
-  // export let medias = [];
+  //export let medias = [];
   export let projects = []; // This will hold data for a single user
   export let len_total_proj;
   export let first_project_id;
@@ -42,6 +42,8 @@
     mprojects = []; // Clear mprojects if there are items in it
     showLess = false; // Change to "Show More"
   }
+
+
 </script>
 
 <section id="section-projects-history" class="flex flex-col p-8 min-h-screen">
@@ -131,16 +133,18 @@
                   <!-- svelte-ignore block_empty -->
                 {/if}
 
-                <button
+                <!-- <button
                   on:click={openGallery()}
                   class="tracking-wider font-light bg-white text-black rounded py-[0.345rem] px-4 border border-gray-300 rounded shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 >
                   View Gallery
-                </button>
+                </button> -->
+
               </div>
             </div>
           </div>
         </div>
+
       </div>
 
       <script>
@@ -166,41 +170,29 @@
 
         //Gallery Parts Begin
 
-        function openGallery() {
-          const galleryPopup = document.getElementById("gallery-popup");
-          if (galleryPopup) {
-            galleryPopup.classList.remove("hidden");
-          }
-        }
+       
 
-        function closeGallery() {
-          const galleryPopup = document.getElementById("gallery-popup");
-          if (galleryPopup) {
-            galleryPopup.classList.add("hidden");
-          }
-        }
-
-        // Tailwind CSS popup structure
-        document.querySelector("footer").insertAdjacentHTML(
-          "beforebegin",
-          `
-  <div id="gallery-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 hidden z-50">
-    <div class="relative bg-white p-6 rounded-lg shadow-lg w-96">
-      <button onclick="closeGallery()" class="absolute top-2 right-2 text-gray-600 text-3xl">&times;</button>
-      <p class="text-center text-lg font-semibold">Gallery Popup</p>
-      <div class="mt-4 flex justify-center" id="img-container">
-        <img id="gallery-image" src="https://images.unsplash.com/photo-1735252723552-138dc3fb6f14?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gallery" class="rounded-lg" />
+//         // Tailwind CSS popup structure
+//         document.querySelector("footer").insertAdjacentHTML(
+//           "beforebegin",
+//           `
+//   <div id="gallery-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 hidden z-50">
+//     <div class="relative bg-white p-6 rounded-lg shadow-lg w-96">
+//       <button onclick="closeGallery()" class="absolute top-2 right-2 text-gray-600 text-3xl">&times;</button>
+//       <p class="text-center text-lg font-semibold">Gallery Popup</p>
+//       <div class="mt-4 flex justify-center" id="img-container">
+//         <img id="gallery-image" src="https://images.unsplash.com/photo-1735252723552-138dc3fb6f14?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gallery" class="rounded-lg" />
       
       
-           </div>
-      <div class="mt-4 flex justify-between">
-        <button  id="prev-image" class="px-4 py-2 bg-gray-300 rounded">Prev</button>
-        <button onclick="nextImage()" id="next-image" class="px-4 py-2 bg-gray-300 rounded">Next</button>
-      </div>
-    </div>
-  </div>
-`,
-        );
+//            </div>
+//       <div class="mt-4 flex justify-between">
+//         <button  id="prev-image" class="px-4 py-2 bg-gray-300 rounded">Prev</button>
+//         <button onclick="nextImage()" id="next-image" class="px-4 py-2 bg-gray-300 rounded">Next</button>
+//       </div>
+//     </div>
+//   </div>
+// `,
+//         );
 
         //Gallery Parts End
       </script>
@@ -325,3 +317,8 @@
     {/if}
   </div>
 </section>
+
+
+
+
+
