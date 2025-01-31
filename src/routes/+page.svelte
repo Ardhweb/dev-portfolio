@@ -1,167 +1,201 @@
-
 <!-- svelte-ignore non_reactive_update -->
 <script>
-    import Navbar from '../components/Navbar.svelte';
-    import HowWeWork from "../components/HowWeWork.svelte";
-    import Footer from '../components/Footer.svelte';
-    import ContactModal from '../components/ContactModal.svelte';
-    import Work from '../components/Work.svelte';
-    import { pushState } from '$app/navigation';
-    import Totalusers from '../components/TestCompo/totalusers.svelte';
-    let { data } = $props();
-    const {  offset, limit, len_total_proj,first_project_id  } = data;
-    import { page } from "$app/stores"
+  import Navbar from "../components/Navbar.svelte";
+  import HowWeWork from "../components/HowWeWork.svelte";
+  import Footer from "../components/Footer.svelte";
+  import ContactModal from "../components/ContactModal.svelte";
+  import Work from "../components/Work.svelte";
+  import { pushState } from "$app/navigation";
+  import Totalusers from "../components/TestCompo/totalusers.svelte";
+  import Carousel from "../components/Carousel.svelte";
+  let { data } = $props();
+  const { offset, limit, len_total_proj, first_project_id } = data;
+  import { page } from "$app/stores";
+
+  let colors = ["red", "orange", "yellow", "green", "blue"];
+  let imgsrc = [
+    "https://placehold.co/600x400",
+    "https://placehold.co/600x400/000000/FFF",
+    "https://placehold.co/10x10",
+    "https://images.unsplash.com/photo-1505533321630-975218a5f66f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+  ];
 </script>
-
-
 
 <div class="bg-gray-900 border-t-lg border-gray-700">
-<!--Navbar-->
-<Navbar></Navbar>
-<!--Navbar End-->
+  <!--Navbar-->
+  <Navbar></Navbar>
+  <!--Navbar End-->
 
-<!--Header-hero-->
-<script>
-  import Heroimg from '$lib/assets/media/hero-1.png';
-</script>
-
-<script>
-  const imgUrl = new URL('static/images/hero-1.png', import.meta.url).href
+  <!--Header-hero-->
+  <script>
+    import Heroimg from "$lib/assets/media/hero-1.png";
   </script>
-  
 
-<section class="py-20 bg-transparent">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto">
-    <!-- Left Side: Image -->
-    <div class="w-full">
-      <!-- svelte-ignore a11y_img_redundant_alt -->
-      <!-- svelte-ignore a11y_missing_attribute -->
-      <img src="/hero-1.png" class="w-full max-w-lg"/>
-      
-    </div>
-    
-    <!-- Right Side: Information -->
-    <div class="text-center md:text-left">
-      <h1 class="text-6xl  text-white mb-4">Hello, I'm Rahul</h1>
-      <p class="text-xl text-gray-300 mb-4">
-        Software Developer
-        {#if $page.data.session}
+  <script>
+    const imgUrl = new URL("static/images/hero-1.png", import.meta.url).href;
+  </script>
+
+  <section class="py-20 bg-transparent">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto"
+    >
+      <!-- Left Side: Image -->
+      <div class="w-full">
+        <!-- svelte-ignore a11y_img_redundant_alt -->
+        <!-- svelte-ignore a11y_missing_attribute -->
+        <img src="/hero-1.png" class="w-full max-w-lg" />
+      </div>
+
+      <!-- Right Side: Information -->
+      <div class="text-center md:text-left">
+        <h1 class="text-6xl text-white mb-4">Hello, I'm Rahul</h1>
+        <p class="text-xl text-gray-300 mb-4">
+          Software Developer
+          {#if $page.data.session}
             {#if $page.data.session.user}
-                <!-- svelte-ignore node_invalid_placement_ssr -->
-                <div class="relative inline-block">
-                    <span class="absolute top-0 left-1 rounded-full bg-green-300 h-[0.4rem] w-[0.4rem] animate-ping"></span>
-                    <span class="absolute top-0 left-1 rounded-full bg-green-400 h-[0.350rem] w-[0.350rem]"></span>
-                </div>
-        {/if}
-        {:else}
-        <span class="inline-block rounded-full bg-gray-400 h-[0.2rem] w-[0.2rem]"></span>
+              <!-- svelte-ignore node_invalid_placement_ssr -->
+              <div class="relative inline-block">
+                <span
+                  class="absolute top-0 left-1 rounded-full bg-green-300 h-[0.4rem] w-[0.4rem] animate-ping"
+                ></span>
+                <span
+                  class="absolute top-0 left-1 rounded-full bg-green-400 h-[0.350rem] w-[0.350rem]"
+                ></span>
+              </div>
+            {/if}
+          {:else}
+            <span
+              class="inline-block rounded-full bg-gray-400 h-[0.2rem] w-[0.2rem]"
+            ></span>
+          {/if}
+        </p>
 
-        {/if}
-    </p>
-    
-      
-      <p class="text-gray-400 mb-6">Passionate about coding and building impactful applications. Always eager to learn and contribute to amazing projects.</p>
-      <div class="flex gap-4 mt-4">
-        <!-- svelte-ignore event_directive_deprecated -->
-        <button on:click={toggleModal} class="tracking-wider font-light bg-white text-black rounded py-[0.345rem] px-4 border border-gray-300 rounded shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
-          Let's Start Now
-        </button>
-        <!-- svelte-ignore event_directive_deprecated -->
-        <button on:click={() => scrollToSection('section-projects-history')}  class="tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4  ">
-          Browser Projects
-        </button>
+        <p class="text-gray-400 mb-6">
+          Passionate about coding and building impactful applications. Always
+          eager to learn and contribute to amazing projects.
+        </p>
+        <div class="flex gap-4 mt-4">
+          <!-- svelte-ignore event_directive_deprecated -->
+          <button
+            on:click={toggleModal}
+            class="tracking-wider font-light bg-white text-black rounded py-[0.345rem] px-4 border border-gray-300 rounded shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          >
+            Let's Start Now
+          </button>
+          <!-- svelte-ignore event_directive_deprecated -->
+          <button
+            on:click={() => scrollToSection("section-projects-history")}
+            class="tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4"
+          >
+            Browser Projects
+          </button>
+        </div>
       </div>
     </div>
-    
-  </div>
-</section>
+  </section>
 
+  <!--Header_hero End-->
 
+  <!--Divider-->
 
+  <!--Divivder1 End-->
 
-
-<!--Header_hero End-->
-
-<!--Divider-->
-
-<!--Divivder1 End-->
-
-<!--About me-->
-<script>
-    
+  <!--About me-->
+  <script>
     function scrollToSection(sectionId) {
       document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
     }
-</script>
-<section class="relative bg-cover  bg-center h-screen">
-  <!-- Background Video -->
-  <div class="absolute inset-0 z-0">
-    <video class="w-full h-full object-cover opacity-50" loop autoplay muted>
-      <source src="5474268-sd_426_226_25fps.mp4" type="video/mp4">
+  </script>
+  <section class="relative bg-cover bg-center h-screen">
+    <!-- Background Video -->
+    <div class="absolute inset-0 z-0">
+      <video class="w-full h-full object-cover opacity-50" loop autoplay muted>
+        <source src="5474268-sd_426_226_25fps.mp4" type="video/mp4" />
         <!-- Fallback content for browsers that don't support video -->
         Your browser does not support the video tag.
-    </video>
-  </div>
-  
-  <!-- Overlay for the video -->
-  <div class="absolute inset-0 bg-black opacity-40 z-10"></div> <!-- Overlay with reduced opacity -->
-  
-  <div class="container  px-6 py-4 relative z-20">
-    <h4 class="flex-first text-white text-[3.5rem]">About me</h4>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mt-3">
-      <!-- Left Column: Content (bigger than the right column) -->
-      <div class="md:col-span-3 text-white">
-        <p class="tracking-wider text-1xl font-normal mb-6 space-y-6">
-          I am a Software Developer with almost 2 years of experience in the IT industry and my higher-level education background is a Computer Science graduate. I currently work at a leading IT company while also taking on freelance projects. I specialize in developing innovative software solutions and business tools that address real-world challenges.
-          
-          <br><br>
-          
-          With expertise in building scalable and efficient products, I help businesses streamline operations and improve productivity through custom software, automation tools, and business optimization. My goal is to deliver impactful, tech-driven results that drive growth.
-        
-          <br><br>
-        
-          Let’s connect and explore how I can help your business thrive with innovative software solutions.
-        </p>
+      </video>
+    </div>
 
-        <!-- svelte-ignore event_directive_deprecated -->
-        <button on:click={() => scrollToSection('section-projects-history')}
-            class="tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4  ">
-          Previous Projects
-        </button>
+    <!-- Overlay for the video -->
+    <div class="absolute inset-0 bg-black opacity-40 z-10"></div>
+    <!-- Overlay with reduced opacity -->
+
+    <div class="container px-6 py-4 relative z-20">
+      <h4 class="flex-first text-white text-[3.5rem]">About me</h4>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mt-3">
+        <!-- Left Column: Content (bigger than the right column) -->
+        <div class="md:col-span-3 text-white">
+          <p class="tracking-wider text-1xl font-normal mb-6 space-y-6">
+            I am a Software Developer with almost 2 years of experience in the
+            IT industry and my higher-level education background is a Computer
+            Science graduate. I currently work at a leading IT company while
+            also taking on freelance projects. I specialize in developing
+            innovative software solutions and business tools that address
+            real-world challenges.
+
+            <br /><br />
+
+            With expertise in building scalable and efficient products, I help
+            businesses streamline operations and improve productivity through
+            custom software, automation tools, and business optimization. My
+            goal is to deliver impactful, tech-driven results that drive growth.
+
+            <br /><br />
+
+            Let’s connect and explore how I can help your business thrive with
+            innovative software solutions.
+          </p>
+
+          <!-- svelte-ignore event_directive_deprecated -->
+          <button
+            on:click={() => scrollToSection("section-projects-history")}
+            class="tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4"
+          >
+            Previous Projects
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!--About me end-->
+  <!--About me end-->
 
-
-<!--myWork-->
-<Work  {offset} {limit} {len_total_proj} {first_project_id } projects={data.projects} medias={data.medias}></Work>
-<!--Workend-!->
+  <!--myWork-->
+  <Work
+    {offset}
+    {limit}
+    {len_total_proj}
+    {first_project_id}
+    projects={data.projects}
+    medias={data.medias}
+  ></Work>
+  <!--Workend-!->
 
 <!How We Work-->
-<HowWeWork></HowWeWork>
-<!--Howe We Work End-->
+  <HowWeWork></HowWeWork>
+  <!--Howe We Work End-->
 
-<!--cta-->
-<ContactModal></ContactModal>
+  <!--cta-->
+  <ContactModal></ContactModal>
 
-<!--ctaend-->
+  <!--ctaend-->
 
-<!--Footer-->
-<Footer></Footer>
+  <!--Footer-->
+  <Footer></Footer>
 
-<!--Offcanvas-->
+  <!--Offcanvas-->
 
+  <!-- <Carousel>
+    {#each imgsrc as imgurl, index (index)}
+      
+      <img alt="jk" class="self-center h-[12rem]" src={imgurl} />
+    {/each}
 
- 
-
- 
-
-
-
-  
+    <span slot="left-control" class="text-white bg-blue-500 p-3 rounded-lg"
+      >Left</span
+    >
+    <span slot="right-control" class="text-white bg-blue-500 p-3 rounded-lg"
+      >Right</span
+    >
+  </Carousel> -->
 </div>
-
-
