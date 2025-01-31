@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { db } from '$lib/server/db/index.js';
-import { project } from './drizzle/schema/schema.js';
+import { project } from './drizzle/schema/schema';
 import { gt, lt, asc } from "drizzle-orm";
 import { sql } from 'drizzle-orm';
 export async function GET({ url }) {
