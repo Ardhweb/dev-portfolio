@@ -6,7 +6,8 @@ import { sql } from 'drizzle-orm';
 export async function GET({ url }) {
     try {
         // Retrieve the last fetched project ID from query params
-        const lastfetchproId = parseInt(url.searchParams.get('lastfetchproId') || '0', 10);
+        // const lastfetchproId = parseInt(url.searchParams.get('lastfetchproId') || '0', 10);
+        const lastfetchproId = Math.floor(Number(url.searchParams.get('lastfetchproId'))) || 0;
 
         // Fetch all project IDs
         const allProjectIds = await db
