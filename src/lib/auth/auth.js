@@ -5,9 +5,10 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import { eq,sql } from 'drizzle-orm';
 import { users } from "../../lib/auth/models/users.js";
 import { db } from "../server/db/index.js";
-
+import * as dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' });
 // Establish SQLite connection for Drizzle
-let baseUr = "http://localhost:5173"
+let baseUrl = process.env.baseUrl
 
 export const { handle, signIn, signOut } = SvelteKitAuth(async (event) => {
   const authOptions = {
