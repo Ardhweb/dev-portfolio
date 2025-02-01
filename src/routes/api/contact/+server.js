@@ -1,5 +1,5 @@
 
-import { sqliteTable, integer, text} from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text} from 'drizzle-orm/sqlite-core';
 import { db } from "/src/lib/server/db/index";
 
 const contactTable = sqliteTable('contact', {

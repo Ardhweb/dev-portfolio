@@ -1,7 +1,7 @@
 // src/routes/api/create-media/+server.js
 import { json } from '@sveltejs/kit';
 import {db} from "$lib/server/db/index.js";
-import {project,media} from "../../../../drizzle/schema/schema.js";
+import {media} from "../../../../drizzle/schema/schema.js";
 
 export async function POST({ request }) {
     try {

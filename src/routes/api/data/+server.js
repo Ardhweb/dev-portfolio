@@ -1,8 +1,8 @@
 import { json } from '@sveltejs/kit';
 import { db } from '$lib/server/db/index.js';
 import { project } from '../../../../drizzle/schema/schema.js';
-import { gt, lt, asc } from "drizzle-orm";
-import { sql } from 'drizzle-orm';
+import { gt,asc } from "drizzle-orm";
+
 export async function GET({ url }) {
     try {
         // Retrieve the last fetched project ID from query params

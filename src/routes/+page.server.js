@@ -1,7 +1,7 @@
 import { db } from "$lib/server/db/index.js";
 import { project,media } from "../../drizzle/schema/schema.js";
-import { gt, desc, asc, sql } from "drizzle-orm";
-import { json } from '@sveltejs/kit';
+import { desc } from "drizzle-orm";
+
 export async function load() {
    
     const limit = 3; // Number of items to fetch at a time
