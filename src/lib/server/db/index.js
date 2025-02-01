@@ -2,7 +2,7 @@
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
 import { env } from '$env/dynamic/private';
-import { users } from "./drizzle/schema/schema.js";
+import { users } from "../../../../drizzle/schema/schema.js";
 
 // Ensure DATABASE_URL is set in the environment
 if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
