@@ -1,5 +1,5 @@
 import {db} from '$lib/server/db/index.js';
-import {project} from './drizzle/schema/schema.js'
+import {project} from '../../../../drizzle/schema/schema.js'
 export const actions = {
     default: async ({ request }) => {
       const formData = await request.formData();
