@@ -1,5 +1,5 @@
 import { db } from "$lib/server/db/index.js";
-import { project, media } from "./drizzle/schema/schema.js";
+import { project, media } from "../../../../drizzle/schema/schema.js";
 import { eq } from "drizzle-orm";
 export async function load() {
     const projects = await db.select().from(project)

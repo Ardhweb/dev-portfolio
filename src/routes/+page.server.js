@@ -1,5 +1,5 @@
 import { db } from "$lib/server/db/index.js";
-import { project,media } from "./drizzle/schema/schema.js";
+import { project,media } from "../../drizzle/schema/schema.js";
 import { gt, desc, asc, sql } from "drizzle-orm";
 import { json } from '@sveltejs/kit';
 export async function load() {
