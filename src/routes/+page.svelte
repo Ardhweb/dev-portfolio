@@ -28,9 +28,7 @@
   </script>
 
   <section class="py-20 bg-transparent">
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto"
-    >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto">
       <!-- Left Side: Image -->
       <div class="w-full">
         <!-- svelte-ignore a11y_img_redundant_alt -->

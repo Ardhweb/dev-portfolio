@@ -6,7 +6,7 @@ import { eq,sql } from 'drizzle-orm';
 import { users } from "../../lib/auth/models/users.js";
 import { db } from "../server/db/index.js";
 import * as dotenv from 'dotenv';
-dotenv.config({ path: '.env.local' });
+dotenv.config({ path: '.env' });
 // Establish SQLite connection for Drizzle
 let baseUrl = process.env.baseUrl
 
@@ -36,7 +36,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth(async (event) => {
         }
       })
     ],
-    secret:import.meta.env.AUTH_SECRET,
+    secret:process.env.AUTH_SECRET,
     trustHost: true,
     pages: {
       signIn: "/accounts/auth/login", // Custom sign-in page route
