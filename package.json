@@ -4,7 +4,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
-		"preview": "vite preview --port $PORT",
+		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
@@ -64,6 +64,7 @@
 		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
+		"@sveltejs/adapter-node": "^5.2.12",
 		"babel-plugin-inline-import": "^3.0.0",
 		"bcrypt": "^5.1.1",
 		"cloudinary": "^2.5.1",
