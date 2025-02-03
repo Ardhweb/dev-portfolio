@@ -1,6 +1,0 @@
-services:
-type:web
-name:ardhweb
-env:node
-buildCommand: npm install && npm run build
-startCommand: node buid/index.js
