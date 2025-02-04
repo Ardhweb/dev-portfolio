@@ -2,7 +2,14 @@
   command = "npm run build"
   publish = "build"
 
+
+
 [functions]
 directory = "netlify/functions"
 
 
+[[_redirects]]
+  from = "/*"  # This will catch all requests (static, dynamic, etc.)
+  to = "/.netlify/functions/sveltekit-wrapper"  # Redirect to your wrapper function
+  status = 200  # Return status OK
+  force = true  # Force the redirect even if static content exists
