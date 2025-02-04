@@ -11,26 +11,26 @@
 // };
 
 // export default config;
-// import adapter from '@sveltejs/adapter-node';
-
-// export default {
-// 	kit: {
-// 		adapter: adapter()
-// 	}
-// };
-
-import adapter from '@sveltejs/adapter-netlify';
-import { sveltekit } from '@sveltejs/kit/vite';
+import adapter from '@sveltejs/adapter-node';
 
 export default {
-  kit: {
-    adapter: adapter(),
-   //target: "#svelte", // Not needed in newer SvelteKit versions, but fine
-   paths: {
-    base: '',
-    assets: '',
-  },
-  },
-  edge: false,
-  preprocess: sveltekit(), // Corrected: Use `sveltekit()` instead of `vitePreprocess()`
+	kit: {
+		adapter: adapter()
+	}
 };
+
+// import adapter from '@sveltejs/adapter-netlify';
+// import { sveltekit } from '@sveltejs/kit/vite';
+
+// export default {
+//   kit: {
+//     adapter: adapter(),
+//    //target: "#svelte", // Not needed in newer SvelteKit versions, but fine
+//    paths: {
+//     base: '',
+//     assets: '',
+//   },
+//   },
+//   edge: false,
+//   preprocess: sveltekit(), // Corrected: Use `sveltekit()` instead of `vitePreprocess()`
+// };
