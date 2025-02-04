@@ -26,7 +26,10 @@ export default {
   kit: {
     adapter: adapter(),
    //target: "#svelte", // Not needed in newer SvelteKit versions, but fine
-   
+   paths: {
+    base: '',
+    assets: '',
+  },
   },
   edge: false,
   preprocess: sveltekit(), // Corrected: Use `sveltekit()` instead of `vitePreprocess()`
