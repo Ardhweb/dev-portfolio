@@ -6,6 +6,8 @@
 
 [functions]
 directory = "netlify/functions"
+external_node_modules = ["@libsql/client", "drizzle-orm","esbuild"]
+included_files = ["sqlitedb.db"]
 
 
 [[_redirects]]
