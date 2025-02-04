@@ -20,12 +20,12 @@
 // };
 
 import adapter from '@sveltejs/adapter-netlify';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import { sveltekit } from '@sveltejs/kit/vite';
 
 export default {
   kit: {
     adapter: adapter(),
-    preprocess: vitePreprocess(),
-	target :"#svelte",
-  }
+   //target: "#svelte", // Not needed in newer SvelteKit versions, but fine
+  },
+  preprocess: sveltekit(), // Corrected: Use `sveltekit()` instead of `vitePreprocess()`
 };
