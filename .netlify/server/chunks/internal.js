@@ -1,6 +1,7 @@
 import { H as HYDRATION_ERROR, o as get_next_sibling, q as define_property, t as set_active_reaction, v as set_active_effect, w as is_array, x as active_reaction, y as active_effect, z as init_operations, A as get_first_child, C as HYDRATION_START, D as HYDRATION_END, E as hydration_failed, F as clear_text_content, G as array_from, I as effect_root, J as is_passive_event, K as create_text, L as branch, M as push, N as pop, O as component_context, P as get, Q as set, R as flush_sync, S as mutable_source, T as render, b as push$1, U as setContext, p as pop$1 } from "./index3.js";
 let base = "";
 let assets = base;
+const app_dir = "_app";
 const initial = { base, assets };
 function override(paths) {
   base = paths.base;
@@ -481,7 +482,6 @@ function Root($$payload, $$props) {
 }
 const root = asClassComponent(Root);
 const options = {
-  app_dir: "_app",
   app_template_contains_nonce: false,
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,
@@ -631,7 +631,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "635gvz"
+  version_hash: "6pgkoj"
 };
 async function get_hooks() {
   let handle;
@@ -653,22 +653,23 @@ async function get_hooks() {
 export {
   building as a,
   base as b,
-  assets as c,
-  public_env as d,
-  read_implementation as e,
-  options as f,
-  set_private_env as g,
-  prerendering as h,
-  set_public_env as i,
-  get_hooks as j,
-  set_safe_public_env as k,
-  set_read_implementation as l,
-  set_assets as m,
-  set_building as n,
+  app_dir as c,
+  assets as d,
+  public_env as e,
+  read_implementation as f,
+  options as g,
+  set_private_env as h,
+  prerendering as i,
+  set_public_env as j,
+  get_hooks as k,
+  set_safe_public_env as l,
+  set_read_implementation as m,
+  set_assets as n,
   override as o,
   private_env as p,
-  set_manifest as q,
+  set_building as q,
   reset as r,
   safe_public_env as s,
-  set_prerendering as t
+  set_manifest as t,
+  set_prerendering as u
 };

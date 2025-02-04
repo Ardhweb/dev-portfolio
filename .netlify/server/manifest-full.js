@@ -10,7 +10,7 @@ return {
 	assets: new Set(["5474268-sd_426_226_25fps.mp4","favicon.png","hero-1.png"]),
 	mimeTypes: {".mp4":"video/mp4",".png":"image/png"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.B0XUcecD.js","app":"_app/immutable/entry/app.Ba7VQdeJ.js","imports":["_app/immutable/entry/start.B0XUcecD.js","_app/immutable/chunks/entry.BS3OV7r0.js","_app/immutable/chunks/runtime.7Ge1fuNx.js","_app/immutable/chunks/index-client.BBpBTt3M.js","_app/immutable/entry/app.Ba7VQdeJ.js","_app/immutable/chunks/runtime.7Ge1fuNx.js","_app/immutable/chunks/render.ClJ_s-Yp.js","_app/immutable/chunks/utils.Cy-Li8da.js","_app/immutable/chunks/template.h0Z7goGF.js","_app/immutable/chunks/disclose-version.Bg9kRutz.js","_app/immutable/chunks/if.DyIswDnK.js","_app/immutable/chunks/props.Cr9UgNTf.js","_app/immutable/chunks/store.Dkw9x94F.js","_app/immutable/chunks/index-client.BBpBTt3M.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
+		client: {start:"_app/immutable/entry/start.CzHSPlZD.js",app:"_app/immutable/entry/app.7l-oXEB2.js",imports:["_app/immutable/entry/start.CzHSPlZD.js","_app/immutable/chunks/sNgMXNaO.js","_app/immutable/chunks/7Ge1fuNx.js","_app/immutable/chunks/CXzkQA5i.js","_app/immutable/entry/app.7l-oXEB2.js","_app/immutable/chunks/7Ge1fuNx.js","_app/immutable/chunks/DDTEk0aU.js","_app/immutable/chunks/iVM7Zh8c.js","_app/immutable/chunks/w3FIQa5R.js","_app/immutable/chunks/Bg9kRutz.js","_app/immutable/chunks/DK9OIDTp.js","_app/immutable/chunks/BaZHT0z1.js","_app/immutable/chunks/D4SyWKqT.js","_app/immutable/chunks/CXzkQA5i.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
@@ -126,6 +126,7 @@ return {
 				endpoint: null
 			}
 		],
+		prerendered_routes: new Set([]),
 		matchers: async () => {
 			
 			return {  };
