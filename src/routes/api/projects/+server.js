@@ -1,14 +1,7 @@
-import { json } from '@sveltejs/kit';
-import { db } from '$lib/server/db/index.js';
-
-import { project } from '../../../../drizzle/schema/schema.js';
-import {eq } from "drizzle-orm";
-
-import { json } from '@sveltejs/kit';
 import { db } from '$lib/server/db/index.js';
 import { project } from '../../../../drizzle/schema/schema.js';
+import { json } from '@sveltejs/kit';
 import { eq } from "drizzle-orm";
-
 export async function DELETE({  url }) {
     try {
         // Get the object ID from the URL params
