@@ -1,142 +1,37 @@
 <script>
-  export let formResult;
+   let { data } = $props();
+  let projects = data.projects;
+  console.log("Received projects in +page.svelte:", projects); // Debugging
 </script>
-
-
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-  {#if formResult?.success}
-  <p class="text-green-600 text-center">Record added successfully!</p>
-{:else if formResult?.error}
-  <p class="text-red-600 text-center">Error: {formResult.error}</p>
-{/if}
-
-  <form method="POST" class="space-y-6 bg-white p-8 rounded shadow-md w-full max-w-5xl">
-    <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Add New Project</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Full-width fields -->
-      <div class="col-span-2">
-        <label class="block">
-          <span class="text-gray-700 font-medium">Project Title:</span>
-          <input
-            type="text"
-            name="projectname"
-            required
-            class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-            placeholder="Enter your name"
-          />
-        </label>
-      </div>
-      <div class="col-span-2">
-        <label class="block">
-          <span class="text-gray-700 font-medium">Brief Description about the project:</span>
-          <input
-            type="text"
-            name="description"
-            required
-            class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-            placeholder="Enter your description"
-          />
-        </label>
-      </div>
-
-      <div class="col-span-2">
-        <label class="block">
-          <span class="text-gray-700 font-medium">Technology & Framework:</span>
-          <input
-            type="text"
-            name="usedlanguage"
-            required
-            class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-            placeholder="Enter technologies used"
-          />
-        </label>
-      </div>
-
-      <!-- Side-by-side fields -->
-      <label class="block">
-        <span class="text-gray-700 font-medium">Start Date:</span>
-        <input
-          type="date"
-          name="start_at"
-          required
-          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-          placeholder="Select start date"
-        />
-      </label>
-      <label class="block">
-        <span class="text-gray-700 font-medium">End Date:</span>
-        <input
-          type="date"
-          name="end_at"
-          required
-          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-          placeholder="Select end date"
-        />
-      </label> 
-
-    
-     
-      <label class="block">
-        <span class="text-gray-700 font-medium">Primary Category:</span>
-        <input
-          type="number"
-          name="primarycategory"
-          required
-          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-          placeholder="Enter primary category"
-        />
-      </label>
-      <label class="block">
-        <span class="text-gray-700 font-medium">Secondary Category:</span>
-        <input
-          type="number"
-          name="secondarycategory"
-          required
-          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-          placeholder="Enter secondary category"
-        />
-      </label>
-      <label class="block">
-        <span class="text-gray-700 font-medium">Project Type:</span>
-        <input
-          type="text"
-          name="type"
-          required
-          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-          placeholder="e.g. Freelance, Hobby, Employer"
-        />
-      </label>
-      <label class="block">
-        <span class="text-gray-700 font-medium">Production URL:</span>
-        <input
-          type="text"
-          name="live_url"
-          required
-          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-          placeholder="Enter live URL"
-        />
-      </label>
-      <label class="block">
-        <span class="text-gray-700 font-medium">Status:</span>
-        <select
-          name="status"
-          required
-          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-          placeholder="Enter project status"
-        >
-        <option value="done">Done</option>
-        <option value="ongoing">Ongoing</option>
-        <option value="completed">Completed</option>
-       
-      </select>
-      </label>
-    </div>
-
-    <button
-      type="submit"
-      class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 focus:ring focus:ring-blue-300 focus:outline-none"
-    >
-      Add Project Work
-    </button>
-  </form>
+<div class="flex space-x-4">
+  <a href="/dashboard/projects/add-new-project" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Add New</a>
 </div>
+
+
+{#if projects.length === 0}
+  <p class="text-center text-gray-500">No projects found.</p>
+{:else}
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="grid grid-cols-1 gap-6 w-full max-w-6xl">
+      {#each projects as project (project.id)}
+        <div class="p-6 rounded-lg shadow-lg bg-white flex flex-col sm:grid sm:grid-cols-2 sm:gap-6">
+          <!-- Column 1: Project name, ID, and buttons -->
+          <div>
+           <small class="text-gray-600">ID: {project.id}</small>
+            <h2 class="text-xl text-black font-semibold">{project.projectname}</h2>
+           
+            <div class="mt-4 flex space-x-4">
+              <button  class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto">Edit</button>
+              <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full sm:w-auto">Delete</button>
+            </div>
+          </div>
+
+          <!-- Column 2: Project description -->
+          <div class="sm:mt-0 mt-4">
+            <p class="text-gray-500">{project.description}</p>
+          </div>
+        </div>
+      {/each}
+    </div>
+  </div>
+{/if}

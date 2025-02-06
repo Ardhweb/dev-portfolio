@@ -11,26 +11,26 @@
             </button>
     
             <p class="tracking-wider font-light  py-[0.345rem] px-4  rounded ">
-             text +91-91720 58785
+             text/call +91-92946-65629
             </p>
     
           </div>
           <div class="w-auto flex inline-block gap-3 mt-2">
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <!-- svelte-ignore a11y_missing_attribute -->
-            <a  class="text-2xl"><i class="lni lni-github"></i></a>
+            <a  href="https://github.com/Ardhweb" class="text-2xl"><i class="lni lni-github"></i></a>
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <!-- svelte-ignore a11y_missing_attribute -->
             <!-- svelte-ignore a11y_missing_attribute -->
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <!-- svelte-ignore a11y_consider_explicit_label -->
-            <a  class="text-2xl"><i class="lni lni-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/rahul-mahawar-07a1991b8/" class="text-2xl"><i class="lni lni-linkedin"></i></a>
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <!-- svelte-ignore a11y_missing_attribute -->
-            <a  class="text-2xl"><i class="lni lni-youtube"></i></a>
+            <a href="https://www.youtube.com/@justcoder181" class="text-2xl"><i class="lni lni-youtube"></i></a>
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <!-- svelte-ignore a11y_missing_attribute -->
-            <a  class="text-2xl"><i class="lni lni-whatsapp"></i></a>
+            <a  href="https://wa.me/+913234665629"  class="text-2xl"><i class="lni lni-whatsapp"></i></a>
           </div>
           
          </div>
