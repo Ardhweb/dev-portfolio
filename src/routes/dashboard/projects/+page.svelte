@@ -2,7 +2,36 @@
    let { data } = $props();
   let projects = data.projects;
   console.log("Received projects in +page.svelte:", projects); // Debugging
+
+  async function deleteItem(id) {
+      try {
+          // Send DELETE request to the correct API endpoint
+          const response = await fetch(`/api/projects?Id=${id}`, {
+              method: 'DELETE',
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+              // Successfully deleted, reload the page
+              alert('Item deleted successfully!');
+              location.reload();  // Reload the page
+          } else {
+              // Handle failure
+              alert(`Error: ${data.message || data.error}`);
+          }
+      } catch (error) {
+          console.error('Error deleting item:', error);
+          alert('An error occurred while deleting the item.');
+      }
+  }
 </script>
+
+
+
+
+
+
 <div class="flex space-x-4">
   <a href="/dashboard/projects/add-new-project" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Add New</a>
 </div>
@@ -22,7 +51,7 @@
            
             <div class="mt-4 flex space-x-4">
               <button  class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto">Edit</button>
-              <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full sm:w-auto">Delete</button>
+              <button   on:click={() => deleteItem(project.id)}  class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full sm:w-auto">Delete</button>
             </div>
           </div>
 
