@@ -29,8 +29,11 @@
   </script>
 
 
-<BackgroundBeams></BackgroundBeams>
-  <section class="py-20 bg-transparent">
+
+  <section class="py-20">
+    
+      <BackgroundBeams />
+  
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto">
       <!-- Left Side: Image -->
       <div class="w-full">

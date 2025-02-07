@@ -7,7 +7,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="#about" class="text-xs text-gray-600">
+          <a href="#about-section" class="text-xs text-gray-600">
             About
           </a>
         </li>

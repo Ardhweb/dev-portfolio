@@ -60,12 +60,12 @@
 
 <div
 	class={cn(
-		'absolute  inset-0 flex h-full  w-full items-center justify-center [mask-repeat:no-repeat] [mask-size:40px]',
+		'inset-1 z-10 flex h-full  w-full items-center justify-center [mask-repeat:no-repeat] [mask-size:40px]',
 		className
 	)}
 >
 	<svg
-		class=" pointer-events-none absolute z-0 h-full w-full"
+		class=" pointer-events-none absolute z-10 h-full w-full"
 		width="100%"
 		height="100%"
 		viewBox="0 0 696 316"
