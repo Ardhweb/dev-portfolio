@@ -58,11 +58,11 @@
       >
         <div class="col-span-1 text-white flex flex-col justify-center items-center">
           <div class="text-3xl">{project.start_at}</div>
-          <p class="text-sm text-gray-400">{project.projectname}</p>
+         
         </div>
 
         <div class="col-span-3 text-white text-center flex flex-col justify-center items-center">
-          <p class="text-sm text-gray-400 truncate">{project.description}</p>
+          <p class="text-3xl  truncate">{project.projectname}</p>
         </div>
 
         <div class="col-span-1 flex justify-end items-center">
@@ -107,11 +107,11 @@
     >
       <div class="col-span-1 text-white flex flex-col justify-center items-center">
         <div class="text-3xl">{project.start_at}</div>
-        <p class="text-sm text-gray-400">{project.projectname}</p>
+   
       </div>
 
       <div class="col-span-3 text-white text-center flex flex-col justify-center items-center">
-        <p class="text-sm text-gray-400 truncate">{project.description}</p>
+        <p class="text-3xl  truncate">{project.projectname}</p>
       </div>
 
       <div class="col-span-1 flex justify-end items-center">

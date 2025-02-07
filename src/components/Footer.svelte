@@ -1,4 +1,4 @@
-<footer class="bg-gray-900">
+<footer class="bg-gray-900" id="footer-section">
     <section class="p-8 min-h-fit">
      <div class="flex text-white px-4 py-4">
       <div class="flex flex-col ">

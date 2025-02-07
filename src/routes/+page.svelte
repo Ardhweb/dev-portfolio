@@ -7,6 +7,7 @@
   import Work from "../components/Work.svelte";
   import { pushState } from "$app/navigation";
   import Totalusers from "../components/TestCompo/totalusers.svelte";
+  import BackgroundBeams from "../components/ui/BackgroundBeams.svelte"
   let { data } = $props();
   const { offset, limit, len_total_proj, first_project_id } = data;
   import { page } from "$app/stores";
@@ -27,6 +28,8 @@
     const imgUrl = new URL("static/images/hero-1.png", import.meta.url).href;
   </script>
 
+
+<BackgroundBeams></BackgroundBeams>
   <section class="py-20 bg-transparent">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto">
       <!-- Left Side: Image -->

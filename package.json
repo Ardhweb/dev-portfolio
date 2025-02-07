@@ -78,6 +78,8 @@
 		"jsonwebtoken": "^9.0.2",
 		"multer": "^1.4.5-lts.1",
 		"siema": "^1.5.1",
-		"sqlite3": "^5.1.7"
+		"sqlite3": "^5.1.7",
+		"svelte-motion": "^0.12.2",
+		"tailwind-merge": "^3.0.1"
 	}
 }

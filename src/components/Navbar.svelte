@@ -2,7 +2,7 @@
     <nav class="flex justify-center items-center py-1">
       <ul class="flex space-x-8 transition-all duration-300 ease-in-out" id="nav-list">
         <li class="relative">
-          <a href="#about" class="text-xs text-gray-600">
+          <a href="#footer-section" class="text-xs text-gray-600">
             Contact
           </a>
         </li>
@@ -23,7 +23,7 @@
         </li>
         <li class="relative">
           <a href="#services" class="text-xs text-gray-600">
-            Service
+            Resume
           </a>
         </li>
       </ul>
