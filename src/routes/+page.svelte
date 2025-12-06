@@ -46,23 +46,26 @@
       <div class="text-center md:text-left">
         <h1 class="text-6xl text-white mb-4">Hello, I'm Rahul</h1>
         <p class="text-xl text-gray-300 mb-4">
-          Software Developer
+          <a href="/accounts/auth/login">Software Developer</a>
           {#if $page.data.session}
             {#if $page.data.session.user}
               <!-- svelte-ignore node_invalid_placement_ssr -->
               <div class="relative inline-block">
+                <a href="/dashboard">
                 <span
                   class="absolute top-0 left-1 rounded-full bg-green-300 h-[0.4rem] w-[0.4rem] animate-ping"
                 ></span>
+                </a>
                 <span
                   class="absolute top-0 left-1 rounded-full bg-green-400 h-[0.350rem] w-[0.350rem]"
                 ></span>
               </div>
             {/if}
           {:else}
+          <a href="/accounts/auth/login">
             <span
               class="inline-block rounded-full bg-gray-400 h-[0.2rem] w-[0.2rem]"
-            ></span>
+            ></span></a>
           {/if}
         </p>
 
