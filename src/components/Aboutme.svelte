@@ -4,7 +4,7 @@
       document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
     }
 </script>
-<section class="relative bg-cover  bg-center h-screen" id="about-section">
+<section class="relative bg-cover  bg-center" id="about-section">
   <!-- Background Video -->
   <div class="absolute inset-0 z-0">
     <video class="w-full h-full object-cover opacity-50" loop autoplay muted>
