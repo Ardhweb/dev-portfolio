@@ -84,7 +84,8 @@
               <h5 class="text-2xl font-medium mb-2">Project Description</h5>
               <p class="text-sm text-gray-400">{project.description}</p>
               <div class="text-white flex gap-3 flex-col">
-                <p class="capitalize">{project.usedlanguage}</p>
+                
+                <p class="capitalize">Stack: {project.usedlanguage}</p>
                 {#if project.live_url}
                   <a href={project.live_url} class="flex items-center space-x-2" aria-label="Visit {project.projectname} live site">
                     <span class="text-xl">🗲</span>
