@@ -27,16 +27,11 @@
   }
 </script>
 
-
-
-
-
-
 <div class="flex space-x-4">
   <a href="/dashboard/projects/add-new-project" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Add New</a>
 </div>
 
-
+<!--below list of exisiting project that we added in past -->
 {#if projects.length === 0}
   <p class="text-center text-gray-500">No projects found.</p>
 {:else}
@@ -50,7 +45,7 @@
             <h2 class="text-xl text-black font-semibold">{project.projectname}</h2>
            
             <div class="mt-4 flex space-x-4">
-              <button  class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto">Edit</button>
+              <a href="/dashboard/projects/edit/{project.id}"  class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto">Edit</a>
               <button   on:click={() => deleteItem(project.id)}  class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full sm:w-auto">Delete</button>
             </div>
           </div>
