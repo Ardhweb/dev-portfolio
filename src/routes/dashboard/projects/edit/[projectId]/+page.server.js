@@ -46,7 +46,7 @@ export const actions = {
     const start_at = formData.get("start_at");
     const end_at = formData.get("end_at");
     const status = formData.get("status");
-    const liveurl = formData.get("liveurl"); // Note: form uses 'live_url', action uses 'liveurl'
+    const live_url = formData.get("live_url"); // Note: form uses 'live_url', action uses 'liveurl'
     const type = formData.get("type");
     // These should ideally come from the form or be looked up, but keeping your original constants
     const primarycategory = 200;
@@ -68,9 +68,11 @@ export const actions = {
           projectname,
           description,
           usedlanguage,
-          start_at: start_at ? new Date(start_at) : null, // Convert string to Date for Drizzle
-          end_at: end_at ? new Date(end_at) : null, // Convert string to Date for Drizzle
-          liveurl,
+          // start_at: start_at ? new Date(start_at) : null, // Convert string to Date for Drizzle
+          // end_at: end_at ? new Date(end_at) : null, // Convert string to Date for Drizzle
+          start_at, // Convert string to Date for Drizzle
+          end_at,
+          live_url,
           status,
           primarycategory,
           secondarycategory,
