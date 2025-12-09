@@ -38,20 +38,20 @@
 
       const result = await response.json(); // Assuming the server returns a JSON response
       formResult = result; // Store the result (success or error)
-
-       if (result.success) {
+       console.log(result.type)
+       if (result.type=='success' && result.status == 200) {
         console.log('Update successful!');
         // Show the success alert
         alert('Update successful!');
 
         // Wait for a couple of seconds before redirecting or reloading
-        setTimeout(() => {
-          // Optionally, redirect to a new page (if needed)
-          // goto('/some-other-page');  // Example to navigate to another page
+        // setTimeout(() => {
+        //   // Optionally, redirect to a new page (if needed)
+        //   // goto('/some-other-page');  // Example to navigate to another page
 
-          // Or reload the current page
-          window.location.reload();  // Reloads the page to reflect the updated data
-        }, 2000); // Delay of 2 seconds
+        //   // Or reload the current page
+        //   window.location.reload();  // Reloads the page to reflect the updated data
+        // }, 2000); // Delay of 2 seconds
       } else {
         console.error('Update failed:', result.error);
         alert(`Update failed: ${result.error}`);
