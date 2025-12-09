@@ -83,9 +83,24 @@
               <h4 class="text-4xl font-medium mb-2">{project.projectname}</h4>
               <h5 class="text-2xl font-medium mb-2">Project Description</h5>
               <p class="text-sm text-gray-400">{project.description}</p>
-              <div class="text-white flex gap-3 flex-col">
-                
-                <p class="capitalize">Stack: {project.usedlanguage}</p>
+            <p class="text-lg text-gray-500 my-2">
+  <span class="text-white text-sm ">Build Period :</span>
+  <span class="text-gray-400 text-sm "> {project.start_at} - {project.end_at}</span>
+</p>
+
+            <div class="text-white flex flex-wrap gap-2">
+  <p class="capitalize w-full">
+    Stack: 
+    {#each project.usedlanguage.split(',').map(lang => lang.trim()) as language}
+      <span class="inline-flex items-center justify-center
+           bg-blue-500 text-gray-900 border-2 border-blue-700
+           rounded-full px-2 py-1 m-1
+           transition-all duration-200 ease-in-out
+           hover:text-gray-300 hover:bg-blue-600 hover:border-blue-800">
+        {language}
+      </span>
+    {/each}
+  </p>
                 {#if project.live_url}
                   <a href={project.live_url} class="flex items-center space-x-2" aria-label="Visit {project.projectname} live site">
                     <span class="text-xl">🗲</span>
