@@ -27,7 +27,7 @@ export const secondcategories = sqliteTable("secondcategories",{
 })
 
 export const skillset = sqliteTable("skillset",{
-  id: text('id').primaryKey().default('AUTOINCREMENT'),
+  id: integer('id').primaryKey(),
   name: text('name').notNull(),
   expertise: text('expertise').notNull(),
   stars: integer('stars'),
