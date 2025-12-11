@@ -8,6 +8,7 @@
   import { pushState } from "$app/navigation";
   import Totalusers from "../components/TestCompo/totalusers.svelte";
   import BackgroundBeams from "../components/ui/BackgroundBeams.svelte"
+  import SkillSet from "../components/SkillSet.svelte";
   let { data } = $props();
   const { offset, limit, len_total_proj, first_project_id } = data;
   import { page } from "$app/stores";
@@ -160,6 +161,10 @@
   </section>
 
   <!--About me end-->
+
+  <!--SkillSet-->
+  <SkillSet></SkillSet>
+  <!--SkillSet End Here -->
 
   <!--myWork-->
   <Work

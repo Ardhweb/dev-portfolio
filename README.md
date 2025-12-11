@@ -71,3 +71,8 @@ To publish your library to [npm](https://www.npmjs.com):
 ```bash
 npm publish
 ```
+
+# Using Animtion and Motion Componenets:
+```bash
+https://aceternity.sveltekit.io/
+```
