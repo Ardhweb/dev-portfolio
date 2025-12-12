@@ -5,28 +5,61 @@
   import { invalidateAll } from '$app/navigation';
   let { data } = $props();
   let skills = data.skillsData; // This will be populated with the data from the load function
-  
+  console.log(data)
   let formResult = null; // Initialize formResult
+  let numberValue = 5;  // Default value
 
   async function handleSubmit(event) {
+   
     const { data, form } = await enhance(event);
 
     formResult = data; // Assign the data to formResult
 
     if (data?.success) {
+
       form.reset(); // Reset the form on success
      // Redirect to login after 2s
-      await invalidateAll();//This will refresh the +page.server and +page.js file if you want to show the new data after insert
 
+      await invalidateAll();//This will refresh the +page.server and +page.js file if you want to show the new data after insert
+      // After invalidate, force a page reload
+ 
     }
   }
+  
 
+  async function deleteItem(id) {
+      try {
+          // Send DELETE request to the correct API endpoint
+          const response = await fetch(`/api/skillset?Id=${id}`, {
+              method: 'DELETE',
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+              // Successfully deleted, reload the page
+              alert('Item deleted successfully!');
+              location.reload();  // Reload the page
+          } else {
+              // Handle failure
+              alert(`Error: ${data.message || data.error}`);
+          }
+      } catch (error) {
+          console.error('Error deleting item:', error);
+          alert('An error occurred while deleting the item.');
+      }
+  }
+ 
 </script>
 
 <h3 class="text-2xl font-semibold text-gray-800 mb-1">Skills</h3>
 <div class="min-h-screen p-4">
 
 <div class="flex  ">
+{#if formResult}
+  <p>{formResult.success ? 'Form submitted successfully!' : `Error: ${formResult.error}`}</p>
+{/if}
+
 
   <form  method="POST"  use:handleSubmit  class="space-y-6 mb-3 bg-white p-8 rounded shadow-md w-full max-w-5xl">
     <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Add New Skill</h2>
@@ -67,6 +100,12 @@
           type="number"
           name="stars"
           required
+          min="1"
+          max="5"
+          step="1"
+          maxlength="1"
+          pattern="[1-5]*"
+          bind:value={numberValue}
           class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
           placeholder="5"
         />
@@ -100,7 +139,7 @@
     <!-- Card 1 -->
     <div class="relative bg-white p-6 rounded-lg shadow-md">
       <!-- Delete button in top-right corner -->
-  <button class="absolute top-2 right-2  rounded-full  hover:bg-red-500 p-1 hover:text-gray-900 focus:outline-none transition-all duration-500 ease-in-out">
+  <button  on:click={() => deleteItem(skill.id)} class="absolute top-2 right-2  rounded-full  hover:bg-red-500 p-1 hover:text-gray-900 focus:outline-none transition-all duration-500 ease-in-out">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
   <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z" clip-rule="evenodd" />
 </svg>

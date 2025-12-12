@@ -14,6 +14,10 @@ export const actions = {
       const expertise = formData.get('expertise');
       const stars = formData.get('stars');
       const year_experiance = formData.get('year_experiance')
+       // Check if 'stars' is a valid number between 1 and 5
+    if (stars < 1 || stars > 5) {
+      return { success: false, error: 'Stars must be between 1 and 5', status: 400 };
+    }
 
       try {
         await db.insert(skillset).values({name,expertise,stars,year_experiance });
