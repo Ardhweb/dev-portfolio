@@ -1,67 +1,81 @@
 <script>
-
-  import { goto } from '$app/navigation';
   import { enhance } from '$app/forms';
   import { invalidateAll } from '$app/navigation';
-  let { data } = $props();
-  let skills = data.skillsData; // This will be populated with the data from the load function
-  console.log(data)
-  let formResult = null; // Initialize formResult
-  let numberValue = 5;  // Default value
 
-  async function handleSubmit(event) {
-   
-    const { data, form } = await enhance(event);
+  let { data,form } = $props();
+//  $inspect(form);
+  let skills = data.skillsData;
+  let formResult = null;
+  let numberValue = 5; // Default value
 
-    formResult = data; // Assign the data to formResult
+$derived:console.log("Form Response 1:",form)
 
-    if (data?.success) {
+$derived: {
+      console.log("Form Response2:", form);
 
-      form.reset(); // Reset the form on success
-     // Redirect to login after 2s
-
-      await invalidateAll();//This will refresh the +page.server and +page.js file if you want to show the new data after insert
-      // After invalidate, force a page reload
- 
-    }
-  }
-  
-
-  async function deleteItem(id) {
-      try {
-          // Send DELETE request to the correct API endpoint
-          const response = await fetch(`/api/skillset?Id=${id}`, {
-              method: 'DELETE',
-          });
-
-          const data = await response.json();
-
-          if (data.success) {
-              // Successfully deleted, reload the page
-              alert('Item deleted successfully!');
-              location.reload();  // Reload the page
-          } else {
-              // Handle failure
-              alert(`Error: ${data.message || data.error}`);
-          }
-      } catch (error) {
-          console.error('Error deleting item:', error);
-          alert('An error occurred while deleting the item.');
+      // Check if the form submission was successful AND contains the new skills data
+      if (form && form.success && form.skillsData) {
+          // 1. UPDATE THE SKILLS LIST with the new data from the action response
+          skills = form.skillsData;
+          console.log("Successfully")
+          
+          // 2. Perform the invalidateAll() command
+          //    While you can put this in handleSubmit, doing it in $derived 
+          //    ensures it runs only AFTER the form variable has successfully updated.
+          invalidateAll();
+         
+         
       }
   }
- 
+  // Handle form submission
+ function handleSubmit() {
+   $derived:console.log("Form Response 3:",form)
+
+  
+      //form.reset(); // Reset the form on success
+     // Redirect to login after 2s
+      invalidateAll();//This will refresh the +page.server and +page.js file if you want to show the new data after insert
+        location.reload()
+    
+  }
+
+  if( form?.success){
+    skills = form.skillsData
+  }
+
+  async function deleteItem(id) {
+    try {
+      const response = await fetch(`/api/skillset?Id=${id}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('Item deleted successfully!');
+        location.reload(); // Reload the page
+      } else {
+        alert(`Error: ${data.message || data.error}`);
+      }
+    } catch (error) {
+      console.error('Error deleting item:', error);
+      alert('An error occurred while deleting the item.');
+    }
+  }
 </script>
+
 
 <h3 class="text-2xl font-semibold text-gray-800 mb-1">Skills</h3>
 <div class="min-h-screen p-4">
+{#if form?.success}
+  <p>{form.success? 'Form submitted successfully!' : `Error: ${form.error}`}</p>
 
-<div class="flex  ">
-{#if formResult}
-  <p>{formResult.success ? 'Form submitted successfully!' : `Error: ${formResult.error}`}</p>
 {/if}
+<div class="flex  ">
 
 
-  <form  method="POST"  use:handleSubmit  class="space-y-6 mb-3 bg-white p-8 rounded shadow-md w-full max-w-5xl">
+
+  <form  method="POST"   use:enhance={handleSubmit}  class="space-y-6 mb-3 bg-white p-8 rounded shadow-md w-full max-w-5xl">
     <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Add New Skill</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
      
