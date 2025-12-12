@@ -63,10 +63,16 @@ export const media  = sqliteTable('media', {
   related_project: integer('related_project') .references(() => project.id),
 })
 
-export const seo_data  = sqliteTable('seo_dat', {
+export const seo_data  = sqliteTable('seo_data', {
   id: integer('id').primaryKey(), 
  seoitems: text('seoitems')
  
 })
 
+export const section_visibility = sqliteTable('section_visibility', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  section_name: text('section_name').notNull(),
+  // Use integer column with 'boolean' mode
+  is_active: integer('is_active', { mode: 'boolean' }).notNull().default(false),
+});
 

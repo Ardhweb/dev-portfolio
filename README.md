@@ -60,7 +60,7 @@ To generate migrations files.
 To apply the generated migrations.
 `npx drizzle-kit push:sqlite`
 
-
+This is depends which type database do you  using sqlite, pg, mysql etc even its cloud provider like turso.
 
 ## Publishing
 
