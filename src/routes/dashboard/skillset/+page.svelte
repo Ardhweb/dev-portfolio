@@ -1,65 +1,15 @@
 <script>
-  import { enhance } from '$app/forms';
-  import { invalidateAll } from '$app/navigation';
+import { enhance } from '$app/forms';
 
-  let { data,form } = $props();
-//  $inspect(form);
-  let skills = data.skillsData;
-  let formResult = null;
+  let { data, form } = $props();
+
   let numberValue = 5; // Default value
 
-$derived:console.log("Form Response 1:",form)
-
-$derived: {
-      console.log("Form Response2:", form);
-
-      // Check if the form submission was successful AND contains the new skills data
-      if (form && form.success && form.skillsData) {
-          // 1. UPDATE THE SKILLS LIST with the new data from the action response
-          skills = form.skillsData;
-          console.log("Successfully")
-          
-          // 2. Perform the invalidateAll() command
-          //    While you can put this in handleSubmit, doing it in $derived 
-          //    ensures it runs only AFTER the form variable has successfully updated.
-          invalidateAll();
-         
-         
-      }
-  }
-  // Handle form submission
- function handleSubmit() {
-   $derived:console.log("Form Response 3:",form)
-
-  
-      //form.reset(); // Reset the form on success
-     // Redirect to login after 2s
-      invalidateAll();//This will refresh the +page.server and +page.js file if you want to show the new data after insert
-        location.reload()
-    
-  }
-
-  if( form?.success){
-    skills = form.skillsData
-  }
-
   async function deleteItem(id) {
-    try {
-      const response = await fetch(`/api/skillset?Id=${id}`, {
-        method: 'DELETE',
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        alert('Item deleted successfully!');
-        location.reload(); // Reload the page
-      } else {
-        alert(`Error: ${data.message || data.error}`);
-      }
-    } catch (error) {
-      console.error('Error deleting item:', error);
-      alert('An error occurred while deleting the item.');
+    const res = await fetch(`/api/skillset?Id=${id}`, { method: 'DELETE' });
+    if (res.ok) {
+      // let SvelteKit refetch instead of reload
+      location.reload(); // (can later be replaced with invalidate)
     }
   }
 </script>
@@ -75,7 +25,7 @@ $derived: {
 
 
 
-  <form  method="POST"   use:enhance={handleSubmit}  class="space-y-6 mb-3 bg-white p-8 rounded shadow-md w-full max-w-5xl">
+  <form  method="POST"   use:enhance class="space-y-6 mb-3 bg-white p-8 rounded shadow-md w-full max-w-5xl">
     <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Add New Skill</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
      
@@ -145,11 +95,11 @@ $derived: {
     </button>
   </form>
 </div>
-{#if skills.length === 0}
+{#if data.skillsData.length === 0}
   <p class="text-center text-gray-500">No skills found.</p>
 {:else}
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-    {#each skills as skill (skill.id)}
+    {#each data.skillsData as skill (skill.id)}
     <!-- Card 1 -->
     <div class="relative bg-white p-6 rounded-lg shadow-md">
       <!-- Delete button in top-right corner -->
