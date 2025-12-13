@@ -163,7 +163,7 @@
   <!--About me end-->
 
   <!--SkillSet-->
-  <SkillSet></SkillSet>
+  <SkillSet skills={data.skills}></SkillSet>
   <!--SkillSet End Here -->
 
   <!--myWork-->
