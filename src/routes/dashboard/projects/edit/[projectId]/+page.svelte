@@ -38,20 +38,13 @@
 
       const result = await response.json(); // Assuming the server returns a JSON response
       formResult = result; // Store the result (success or error)
-       console.log(result.type)
+      //console.log(result.type)
        if (result.type=='success' && result.status == 200) {
         console.log('Update successful!');
         // Show the success alert
         alert('Update successful!');
 
-        // Wait for a couple of seconds before redirecting or reloading
-        // setTimeout(() => {
-        //   // Optionally, redirect to a new page (if needed)
-        //   // goto('/some-other-page');  // Example to navigate to another page
-
-        //   // Or reload the current page
-        //   window.location.reload();  // Reloads the page to reflect the updated data
-        // }, 2000); // Delay of 2 seconds
+       
       } else {
         console.error('Update failed:', result.error);
         alert(`Update failed: ${result.error}`);
@@ -207,6 +200,18 @@
           <option value="ongoing">Ongoing</option>
           <option value="completed">Completed</option>
         </select>
+      </label>
+
+       <label class="block">
+        <span class="text-gray-700 font-medium">Github:</span>
+        <input
+          type="text"
+          name="git_url"
+          required
+          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
+          placeholder="Enter Github repo URL"
+          value="{projectData.git_url || ''}"
+        />
       </label>
     </div>
 

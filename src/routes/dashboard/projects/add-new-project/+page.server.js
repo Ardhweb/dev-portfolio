@@ -18,12 +18,13 @@ export const actions = {
       const type = formData.get('type');
       const primarycategory = 200
       const secondarycategory = 454
+      const git_url = formData.get('git_url');
 
       
       
   
       try {
-        await db.insert(project).values({projectname , description, usedlanguage, start_at, end_at,liveurl, status, primarycategory, secondarycategory, type });
+        await db.insert(project).values({projectname , description, usedlanguage, start_at, end_at,liveurl, status, primarycategory, secondarycategory, type,git_url });
         return { success: true };
       } catch (error) {
         console.error(error);

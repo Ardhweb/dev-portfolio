@@ -118,13 +118,16 @@
       </label>
       <label class="block">
         <span class="text-gray-700 font-medium">Project Type:</span>
-        <input
-          type="text"
+        <select
           name="type"
+        
           required
           class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
-          placeholder="e.g. Freelance, Hobby, Employer"
-        />
+        >
+          <option value="freelance">Freelance</option>
+          <option value="hobby">Hobby</option>
+          <option value="associated">Associated</option>
+        </select>
       </label>
       <label class="block">
         <span class="text-gray-700 font-medium">Production URL:</span>
@@ -149,6 +152,17 @@
         <option value="completed">Completed</option>
        
       </select>
+      </label>
+
+       <label class="block">
+        <span class="text-gray-700 font-medium">Github:</span>
+        <input
+          type="text"
+          name="git_url"
+          required
+          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
+          placeholder="Enter github repo URL"
+        />
       </label>
     </div>
 

@@ -51,6 +51,7 @@ export const actions = {
     // These should ideally come from the form or be looked up, but keeping your original constants
     const primarycategory = 200;
     const secondarycategory = 454;
+    const git_url = formData.get("git_url");
 
     // Ensure projectId is provided
     if (!projectId) {
@@ -77,6 +78,7 @@ export const actions = {
           primarycategory,
           secondarycategory,
           type,
+          git_url,
         })
         .where(eq(project.id, projectId)); // Update the specific project by ID
       return { success: true };
