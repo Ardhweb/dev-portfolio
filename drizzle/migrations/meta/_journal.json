@@ -71,6 +71,13 @@
       "when": 1765518658678,
       "tag": "0009_lovely_kulan_gath",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1765703322450,
+      "tag": "0010_violet_shinobi_shaw",
+      "breakpoints": true
     }
   ]
 }

@@ -18,7 +18,7 @@
   <div class="absolute inset-0 bg-black opacity-40 z-10"></div> <!-- Overlay with reduced opacity -->
   
   <div class="container  px-6 py-4 relative z-20">
-    <h4 class="flex-first text-white text-[3.5rem]">About me</h4>
+    <h4 class="flex-first text-white text-[2.5rem]">About me</h4>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mt-3">
       <!-- Left Column: Content (bigger than the right column) -->
       <div class="md:col-span-3 text-white">

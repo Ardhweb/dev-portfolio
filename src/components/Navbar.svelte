@@ -22,7 +22,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="https://github/com/ardhweb" class="text-xs text-gray-600">
+          <a href="https://github.com/ardhweb" class="text-xs text-gray-600">
             Resume
           </a>
         </li>

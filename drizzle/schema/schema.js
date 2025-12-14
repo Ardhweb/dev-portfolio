@@ -53,6 +53,7 @@ export const project = sqliteTable("project", {
   secondarycategory: integer("secondarycategory").notNull(),
   type: text("type").notNull(),// Dropdown-like predefined options
   img: text('img'),
+  git_url : text('git_url'),
 })
 
 export const media  = sqliteTable('media', {
