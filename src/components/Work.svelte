@@ -40,10 +40,10 @@
 
     if (details.style.maxHeight) {
       details.style.maxHeight = null;
-      grid.classList.add("hover:bg-[url('https://picsum.photos/536/354')]");
+    
     } else {
       details.style.maxHeight = `${details.scrollHeight}px`;
-      grid.classList.remove("hover:bg-[url('https://picsum.photos/536/354')]");
+     
     }
   }
   const languageStyles = {
@@ -65,21 +65,26 @@
 </script>
 
 <section id="section-projects-history" class="flex flex-col p-8 min-h-screen">
-  <h4 class="flex-first text-white text-[2.5rem]">Recent Work</h4>
+<div class="relative w-fit">
+  <small class="text-1xl glow font-mono text-green-500 absolute top-[-1rem] left-0">04</small>
+  <h4 class="text-white w-fit text-[2.5rem]">Recent Work</h4>
+</div>
+
+
   
   {#if projects.length > 0}
     {#each projects as project}
       <div id="projectGrid{project.id}" 
-        class="mt-6 relative grid grid-cols-2 gap-1 p-6 text-center border border-gray-700 rounded-lg transition-all duration-300 ease-in-out bg-gray-800 hover:bg-opacity-50 hover:bg-cover hover:bg-[url('https://picsum.photos/536/354')]"
+        class="mt-6 relative grid grid-cols-2 gap-1 p-6 text-center  border-gray-700 rounded-lg transition-all duration-300 ease-in-out bg-gray-800 "
       >
       
         <div class="col-span-3 text-white text-center flex flex-col justify-center items-center">
-          <p class="text-3xl  truncate">{project.projectname}</p>
+          <p class="font-mono text-2xl text-gray-100  truncate">{project.projectname}</p>
         </div>
 
         <div class="col-span-1 flex justify-end items-center">
           <button on:click={() => toggleDetails(project.id)}
-            class="rounded-full text-white border p-2 hover:border-gray-400"
+            class="rounded-full text-white border p-2 hover:text-green-500 hover:font-semibold hover:border-green-400"
             aria-label="Expand project details"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

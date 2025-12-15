@@ -37,16 +37,17 @@
   
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto">
       <!-- Left Side: Image -->
-      <div class="w-full">
-        <!-- svelte-ignore a11y_img_redundant_alt -->
-        <!-- svelte-ignore a11y_missing_attribute -->
-        <img src="/hero-1.png" class="w-full max-w-lg" />
-      </div>
+<div class="w-full relative">
+  <img src="/image-logo.webp" class=" hidden animate-spin-slow duration-[10s] absolute inset-0 h-60 object-cover " alt="background">
+  <img src="/hero-1.png" class="w-full max-w-lg relative z-10" />
+</div>
+
 
       <!-- Right Side: Information -->
-      <div class="text-center md:text-left">
-        <h1 class="text-6xl text-white mb-4">Hello, I'm Rahul</h1>
-        <p class="text-xl text-gray-300 mb-4">
+      <div class="text-center md:text-left">  <div class="relative w-fit">
+  <small class="text-1xl glow font-mono text-green-500 absolute top-[-1rem] left-0">01</small>
+  <h1 class="text-6xl text-white ">Hello, I'm Rahul</h1>
+          <p class="text-xl text-gray-300 mb-4">
           <a href="/accounts/auth/login">Software Developer</a>
           {#if $page.data.session}
             {#if $page.data.session.user}
@@ -69,6 +70,9 @@
             ></span></a>
           {/if}
         </p>
+</div>
+        
+
 
         <p class="text-gray-400 mb-6">
           Passionate about coding and building impactful applications. Always
@@ -87,7 +91,7 @@
             on:click={() => scrollToSection("section-projects-history")}
             class="tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded py-[0.345rem] px-4"
           >
-            Browser Projects
+            Browse Projects
           </button>
         </div>
       </div>
@@ -123,7 +127,10 @@
     <!-- Overlay with reduced opacity -->
 
     <div class="container px-6 py-4 relative z-20">
-      <h4 class="flex-first text-white text-[2.5rem]">About me</h4>
+   <div class="relative w-fit">
+  <small class="text-1xl glow font-mono text-green-500 absolute top-[-1rem] right-0">02</small>
+  <h4 class="text-white w-fit text-[2.5rem]">About me</h4>
+</div>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mt-3">
         <!-- Left Column: Content (bigger than the right column) -->
         <div class="md:col-span-3 text-white">
