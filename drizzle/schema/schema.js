@@ -32,6 +32,7 @@ export const skillset = sqliteTable("skillset",{
   expertise: text('expertise').notNull(),
   stars: integer('stars'),
   year_experiance : integer('year_experiance'),
+  is_primary: integer('is_primary', { mode: 'boolean' }).notNull().default(false),
 
 })
 

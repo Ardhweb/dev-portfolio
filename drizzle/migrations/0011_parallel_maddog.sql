@@ -1,0 +1,1 @@
+ALTER TABLE skillset ADD `is_primary` integer DEFAULT false NOT NULL;
