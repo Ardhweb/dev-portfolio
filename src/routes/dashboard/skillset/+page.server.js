@@ -50,12 +50,17 @@ export async function load() {
 export const actions = {
   default: async ({ request }) => {
     const formData = await request.formData();
+    const is_primary_str = formData.get('is_primary');
+    
+    // Convert 'is_primary' string to boolean (true or false)
+    const is_primary = is_primary_str === "true"; // If "t
 
     await db.insert(skillset).values({
       name: formData.get('skillname'),
       expertise: formData.get('expertise'),
       stars: Number(formData.get('stars')),
-      year_experiance: Number(formData.get('year_experiance'))
+      year_experiance: Number(formData.get('year_experiance')),
+      is_primary
     });
 
     return { success: true };

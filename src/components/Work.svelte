@@ -95,7 +95,9 @@
 
         <div id="projectDetails{project.id}" class="font-secondary text-white  col-span-5 overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
           <div class="p-4 border-t border-gray-700 mt-4 flex flex-col md:flex-row  gap-4">
+            
             <img src={project.img} alt="Project image for {project.projectname}" class="w-full md:w-1/2 rounded-lg object-cover" />
+            
             <div class="md:w-1/2 text-left">
          
               

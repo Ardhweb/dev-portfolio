@@ -85,6 +85,23 @@ import { enhance } from '$app/forms';
         />
       </label>
     
+
+     <label class="block">
+        <span class="text-gray-700 font-medium">Primary Skill:</span>
+        <select
+          name="is_primary"
+          required
+          class="mt-1 w-full p-3 border rounded focus:ring focus:ring-blue-300 outline-none"
+          placeholder="Beginner, Intermediate, Expert"
+        >
+       
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+       
+      </select>
+      </label>
+
+      
     </div>
 
     <button
@@ -119,6 +136,10 @@ import { enhance } from '$app/forms';
          <div>
           <span class="font-semibold text-gray-700">Years of Experience:</span>
           <span class="text-gray-600">{skill.year_experiance}</span>
+        </div>
+         <div>
+          <span class="font-semibold text-gray-700">Primary:</span>
+          <span class="text-gray-600">{skill.is_primary}</span>
         </div>
         <div>
           <span class="font-semibold text-gray-700">Stars(5):</span>

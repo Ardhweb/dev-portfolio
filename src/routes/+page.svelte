@@ -38,7 +38,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto">
       <!-- Left Side: Image -->
 <div class="w-full relative">
-  <img src="/image-logo.webp" class=" hidden animate-spin-slow duration-[10s] absolute inset-0 h-60 object-cover " alt="background">
+  <img src="/image-logo.webp"  style="animation: spin 10s linear infinite;" class="  hidden animate-spin absolute inset-0 h-60 object-cover " alt="background">
   <img src="/hero-1.png" class="w-full max-w-lg relative z-10" />
 </div>
 
