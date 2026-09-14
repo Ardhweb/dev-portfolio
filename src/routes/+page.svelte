@@ -79,26 +79,34 @@
         </p>
       </div>
 
-      <p class="text-[0.65rem] sm:text-xs md:text-base text-gray-400 mb-3 sm:mb-4 md:mb-6">
+    <!--   <p class="text-[0.65rem] sm:text-xs md:text-base text-gray-400 mb-3 sm:mb-4 md:mb-6">
         Passionate about coding and building impactful applications. Always
         eager to learn and contribute to amazing projects.
-      </p>
+      </p> -->
+
+      <p class="max-[280px]:text-[0.45rem] text-[0.65rem] sm:text-xs md:text-base text-gray-400 mb-3 sm:mb-4 md:mb-6 font-normal leading-relaxed">
+  Passionate about <span class="text-emerald-400 font-medium">coding and building</span> impactful applications. Always eager to <span class="text-gray-200 font-medium">learn and contribute</span> to amazing projects.
+</p>
 
       <div class="flex gap-1.5 sm:gap-3 md:gap-4 mt-2 sm:mt-4">
         <!-- svelte-ignore event_directive_deprecated -->
         <button
-          on:click={toggleModal}
-          class="tracking-wider font-light bg-white text-black text-[0.6rem] sm:text-xs md:text-base rounded py-1 sm:py-[0.345rem] px-1.5 sm:px-4 border border-gray-300 shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-        >
-          Let's Start Now
-        </button>
-        <!-- svelte-ignore event_directive_deprecated -->
-        <button
-          on:click={() => scrollToSection("section-projects-history")}
-          class="tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded text-[0.6rem] sm:text-xs md:text-base py-1 sm:py-[0.345rem] px-1.5 sm:px-4"
-        >
-          Browse Projects
-        </button>
+  on:click={toggleModal}
+  class="tracking-wider font-light bg-white text-black max-[280px]:text-[0.4rem] text-[0.6rem] sm:text-xs md:text-base rounded py-1 sm:py-[0.345rem] px-1.5 sm:px-4 border border-gray-300 shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+>
+  Let's Start Now
+</button>
+<!-- svelte-ignore event_directive_deprecated -->
+<button
+  on:click={() => scrollToSection("section-projects-history")}
+  class="tracking-wider text-slate-50 font-light border hover:bg-white hover:text-black rounded max-[280px]:text-[0.4rem] text-[0.6rem] sm:text-xs md:text-base py-1 sm:py-[0.345rem] px-1.5 sm:px-4"
+>
+  Browse Projects
+</button>
+
+
+
+
       </div>
 
       <div class="flex gap-2 mt-2">

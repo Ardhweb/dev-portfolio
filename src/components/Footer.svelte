@@ -54,7 +54,7 @@
             
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <!-- svelte-ignore a11y_missing_attribute -->
-            <a href="https://wa.me/+913234665629" class="text-xl sm:text-2xl hover:text-emerald-400 transition-colors"><i class="lni lni-whatsapp"></i></a>
+            <a href="https://wa.me/+919294665629" class="text-xl sm:text-2xl hover:text-emerald-400 transition-colors"><i class="lni lni-whatsapp"></i></a>
           </div>
 
         </div>
