@@ -64,12 +64,14 @@
     languageStyles[lang.toLowerCase()] || defaultStyle;
 </script>
 
-<section id="section-projects-history" class="flex flex-col p-8 min-h-screen">
-<div class="relative w-fit">
-  <small class="text-1xl glow font-mono text-green-500 absolute top-[-1rem] left-0">04</small>
-  <h4 class="text-white w-fit text-[2.5rem]">Recent Work</h4>
-</div>
-
+<section id="section-projects-history" class="flex flex-col p-6 sm:p-6 md:p-8 min-h-0 md:min-h-screen">
+ <div class="relative w-full text-left">
+      <small class="text-xs sm:text-1xl glow font-mono text-green-500 absolute top-[-0.75rem] sm:top-[-1rem] left-0">
+        03
+      </small>
+      <h4 class="text-white text-2xl sm:text-3xl md:text-[2.5rem]">Recent Work</h4>
+      
+    </div>
 
   
   {#if projects.length > 0}
@@ -78,19 +80,47 @@
         class="mt-6 relative grid grid-cols-2 gap-1 p-6 text-center  border-gray-700 rounded-lg transition-all duration-300 ease-in-out bg-gray-800 "
       >
       
-        <div class="col-span-3 text-white text-center flex flex-col justify-center items-center">
+        <!-- <div class="col-span-3 text-white text-center flex flex-col justify-center items-center ">
           <p class="font-mono text-2xl text-gray-100  truncate">{project.projectname}</p>
-        </div>
+        </div> -->
 
+       <div class="col-span-3 text-white text-center flex flex-col justify-center items-center w-full px-2">
+  <p class="font-mono text-base md:text-2xl text-gray-100 truncate max-w-full leading-tight font-medium tracking-tight">
+    {project.projectname}
+  </p>
+</div>
+ 
         <div class="col-span-1 flex justify-end items-center">
-          <button on:click={() => toggleDetails(project.id)}
+          <!-- <button on:click={() => toggleDetails(project.id)}
             class="rounded-full text-white border p-2 hover:text-green-500 hover:font-semibold hover:border-green-400"
             aria-label="Expand project details"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"></path>
             </svg>
-          </button>
+          </button> -->
+
+          <button 
+  on:click={() => {
+    project.expanded = !project.expanded;
+    toggleDetails(project.id);
+  }}
+  class="rounded-full text-white border p-2 hover:text-green-500 hover:font-semibold hover:border-green-400"
+  aria-label="Expand project details"
+>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    class="h-5 w-5 transition-transform duration-300 {project.expanded ? 'rotate-90' : 'rotate-0'}" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor"
+  >
+    <!-- Your exact original path -->
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"></path>
+  </svg>
+</button>
+
+
         </div>
 
         <div id="projectDetails{project.id}" class="font-secondary text-white  col-span-5 overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
@@ -101,7 +131,33 @@
             <div class="md:w-1/2 text-left">
          
               
-              <p class="text-sm text-normal text-gray-400">{project.description}</p>
+              <!-- <p class="text-sm text-normal text-gray-400">{project.description}</p> -->
+            <div class="flex flex-col items-start w-full gap-1">
+  <p 
+    class="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed font-normal tracking-wide text-left transition-all duration-300 {project.showMore ? '' : 'line-clamp-2 md:line-clamp-3'}"
+  >
+    {project.description}
+  </p>
+
+  {#if project.description && project.description.length > 90}
+    <button 
+      type="button"
+      on:click|stopPropagation={() => {
+        project.showMore = !project.showMore;
+        // Recalculate container height for smooth animation if accordion is open
+        const details = document.getElementById(`projectDetails${project.id}`);
+        if (details && details.style.maxHeight) {
+          setTimeout(() => {
+            details.style.maxHeight = `${details.scrollHeight}px`;
+          }, 50);
+        }
+      }}
+      class="text-xs sm:text-sm font-medium text-emerald-400 hover:text-emerald-300 hover:underline focus:outline-none transition-colors mt-0.5"
+    >
+      {project.showMore ? 'Read Less' : 'Read More'}
+    </button>
+  {/if}
+</div>
             <p class="inline-flex items-center gap-1 my-2">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
   <path d="M10 9.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V10a.75.75 0 0 0-.75-.75H10ZM6 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H6ZM8 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H8ZM9.25 14a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H10a.75.75 0 0 1-.75-.75V14ZM12 11.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V12a.75.75 0 0 0-.75-.75H12ZM12 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H12ZM13.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H14a.75.75 0 0 1-.75-.75V12ZM11.25 10.005c0-.417.338-.755.755-.755h2a.755.755 0 1 1 0 1.51h-2a.755.755 0 0 1-.755-.755ZM6.005 11.25a.755.755 0 1 0 0 1.51h4a.755.755 0 1 0 0-1.51h-4Z" />
